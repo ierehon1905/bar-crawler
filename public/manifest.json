@@ -1,0 +1,9 @@
+{
+  "name": "Bar Crawler",
+  "short_name": "Crawler",
+  "description": "Crawl bars with ease",
+  "theme_color": "#ffff00",
+  "background_color": "#ffff00",
+  "display": "standalone",
+  "orientation": "natural"
+}

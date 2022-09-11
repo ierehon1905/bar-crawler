@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 
 /**
  * @see https://yandex.ru/dev/maps/geocoder/doc/desc/concepts/input_params.html#input_params__geocode-format
@@ -131,10 +131,17 @@ function getTaxiUrl({
   return res;
 }
 
-function App() {
+const App: React.FC = () => {
   const [position, setPosition] = useState<GeolocationPosition | undefined>(
     undefined
   );
+  const [selectedBar, setSelectedBar] = useState<string | undefined>(
+    bars[Math.trunc(Math.random() * bars.length)]
+  );
+  const spacerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [spacerHeight, setSpacerHeight] = useState(0);
+
   useEffect(() => {
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition(
@@ -148,22 +155,75 @@ function App() {
       /* geolocation IS NOT available */
     }
   }, []);
+
+  useLayoutEffect(() => {
+    const rect = containerRef.current?.getBoundingClientRect();
+    const fullHeight = window.innerHeight;
+    const fullWidth = window.innerWidth;
+
+    const spacerHeight = fullHeight - rect!.y - rect!.height;
+    setSpacerHeight(spacerHeight);
+  }, []);
+
   return (
     <div>
-      <h1>App</h1>
-
-      <a
-        href={getTaxiUrl({
-          endLat: 55.734452,
-          endLon: 37.58783,
-          startLat: position?.coords.latitude,
-          startLon: position?.coords.longitude,
-        })}
+      <h1>Bar crawler</h1>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+        ref={containerRef}
       >
-        test
-      </a>
+        <h2>{selectedBar}</h2>
+        <button
+          onClick={() =>
+            setSelectedBar(bars[Math.trunc(Math.random() * bars.length)])
+          }
+          style={{
+            appearance: "none",
+            WebkitAppearance: "none",
+            border: "none",
+            fontSize: "1.7em",
+            backgroundColor: "yellow",
+            color: "black",
+            padding: "0.2em 0.5em",
+            borderRadius: "8px",
+          }}
+        >
+          re-roll
+        </button>
+        <div
+          className="spacer"
+          ref={spacerRef}
+          style={{ height: spacerHeight }}
+        ></div>
+        <a
+          style={{
+            display: "grid",
+            width: "50vw",
+            height: "50vw",
+            backgroundColor: "yellow",
+            color: "black",
+            textDecoration: "none",
+            borderRadius: "51%",
+            placeItems: "center",
+            fontSize: "2.5em",
+            marginBottom: 20,
+          }}
+          href={getTaxiUrl({
+            endLat: 55.734452,
+            endLon: 37.58783,
+            startLat: position?.coords.latitude,
+            startLon: position?.coords.longitude,
+          })}
+        >
+          Поехали
+        </a>
+      </div>
     </div>
   );
-}
+};
 
 export default App;
