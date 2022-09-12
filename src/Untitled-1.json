@@ -1,0 +1,59 @@
+{
+  "response": {
+    "GeoObjectCollection": {
+      "metaDataProperty": {
+        "GeocoderResponseMetaData": {
+          "request": "Moscow Bar The Tipsy Pub",
+          "results": "10",
+          "found": "1"
+        }
+      },
+      "featureMember": [
+        {
+          "GeoObject": {
+            "metaDataProperty": {
+              "GeocoderMetaData": {
+                "precision": "other",
+                "text": "Россия, Москва",
+                "kind": "locality",
+                "Address": {
+                  "country_code": "RU",
+                  "formatted": "Россия, Москва",
+                  "Components": [
+                    { "kind": "country", "name": "Россия" },
+                    {
+                      "kind": "province",
+                      "name": "Центральный федеральный округ"
+                    },
+                    { "kind": "province", "name": "Москва" },
+                    { "kind": "locality", "name": "Москва" }
+                  ]
+                },
+                "AddressDetails": {
+                  "Country": {
+                    "AddressLine": "Россия, Москва",
+                    "CountryNameCode": "RU",
+                    "CountryName": "Россия",
+                    "AdministrativeArea": {
+                      "AdministrativeAreaName": "Москва",
+                      "Locality": { "LocalityName": "Москва" }
+                    }
+                  }
+                }
+              }
+            },
+            "name": "Москва",
+            "description": "Россия",
+            "boundedBy": {
+              "Envelope": {
+                "lowerCorner": "37.32606 55.49133",
+                "upperCorner": "37.967799 55.957565"
+              }
+            },
+            "Point": { "pos": "37.617644 55.755819" }
+          }
+        }
+      ]
+    }
+  }
+}

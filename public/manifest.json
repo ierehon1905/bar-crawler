@@ -5,5 +5,12 @@
   "theme_color": "#ffff00",
   "background_color": "#ffff00",
   "display": "standalone",
-  "orientation": "natural"
+  "orientation": "natural",
+  "icons": [
+    {
+      "src": "/icon.png",
+      "sizes": "any",
+      "type": "image/png"
+    }
+  ]
 }
