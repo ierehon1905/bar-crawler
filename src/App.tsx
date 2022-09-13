@@ -2,6 +2,39 @@ import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 
 type BarInfo = [string, [number, number]];
 
+function distance(lat1: number, lat2: number, lon1: number, lon2: number) {
+  // The math module contains a function
+  // named toRadians which converts from
+  // degrees to radians.
+  lon1 = (lon1 * Math.PI) / 180;
+  lon2 = (lon2 * Math.PI) / 180;
+  lat1 = (lat1 * Math.PI) / 180;
+  lat2 = (lat2 * Math.PI) / 180;
+
+  // Haversine formula
+  const dlon = lon2 - lon1;
+  const dlat = lat2 - lat1;
+  const a =
+    Math.pow(Math.sin(dlat / 2), 2) +
+    Math.cos(lat1) * Math.cos(lat2) * Math.pow(Math.sin(dlon / 2), 2);
+
+  const c = 2 * Math.asin(Math.sqrt(a));
+
+  // Radius of earth in kilometers. Use 3956
+  // for miles
+  const r = 6371;
+
+  // calculate the result
+  return c * r;
+}
+
+// Moscow bbox
+// 55.911086, 37.369779 top left
+// 55.573962, 37.877266 bot right
+
+// bot left 55.573962 37.369779
+// top right 55.911086 37.877266
+
 /**
  * @see https://yandex.ru/dev/maps/geocoder/doc/desc/concepts/input_params.html#input_params__geocode-format
  */
@@ -17,18 +50,18 @@ const bars: BarInfo[] = [
   // "Blacksmith",
   // "The Tipsy Pub",
   // "O’Hara",
-  // "St Peter’s & St Anton",
-  // "Drunken Duck Pub",
-  // "Punch & Judy",
-  // "Mollie’s",
-  // "Джон Донн",
-  // "Temple Bar",
-  // "London Pub",
+  ["St Peter’s & St Anton", [55.756368, 37.60974]],
+  ["Drunken Duck Pub", [55.642114, 37.52402]],
+  ["Punch & Judy", [55.744595, 37.627363]],
+  ["Mollie’s", [55.762528, 37.634403]],
+  ["Джон Донн", [55.755462, 37.600417]],
+  ["Temple Bar", [55.76025, 37.664007]],
+  ["London Pub", [55.761847, 37.62676]],
   // "Pub&Pub",
-  // "Йоркшир",
+  ["Йоркшир", [55.783259, 37.52722]],
   // "БирХаус",
-  // "Katie O’Shea’s",
-  // "Scotland Yard",
+  ["Katie O’Shea’s", [55.777251, 37.634422]],
+  ["Scotland Yard", [55.768715, 37.613279]],
   // "Шпатен-хаус",
   // "Left Bank",
   // "Pub Daddy",
@@ -39,7 +72,7 @@ const bars: BarInfo[] = [
   // "Ганс и Марта",
   // "Черчилль Паб",
   // "Molly Gwynn’s",
-  // "PasternakBar",
+  ["PasternakBar", [55.770701, 37.596425]],
   // "Мюнхен",
   // "The Left Bank",
   // "Джонни Грин паб",
@@ -180,9 +213,36 @@ const App: React.FC = () => {
       >
         <h2>{selectedBar?.[0]}</h2>
         <button
-          onClick={() =>
-            setSelectedBar(bars[Math.trunc(Math.random() * bars.length)])
-          }
+          onClick={() => {
+            const nextBars = [...bars];
+            const start: [number, number] | undefined = selectedBar
+              ? selectedBar[1]
+              : position
+              ? [position.coords.latitude, position.coords.longitude]
+              : undefined;
+
+            if (!start) {
+              setSelectedBar(bars[Math.trunc(Math.random() * bars.length)]);
+              return;
+            }
+
+            const withDistance = nextBars
+              .filter((b) => b[0] !== selectedBar?.[0])
+              .map((a) => ({
+                bar: a,
+                distance: distance(start[0], a[1][0], start[1], a[1][1]),
+              }));
+
+            withDistance.sort((a, b) => a.distance - b.distance);
+
+            const closest = withDistance.slice(0, 5);
+
+            console.log(closest.map((c) => c.distance));
+
+            const pick = closest[Math.trunc(Math.random() * closest.length)];
+
+            setSelectedBar(pick.bar);
+          }}
           style={{
             appearance: "none",
             WebkitAppearance: "none",
@@ -194,7 +254,7 @@ const App: React.FC = () => {
             borderRadius: "8px",
           }}
         >
-          re-roll
+          другой
         </button>
         <div
           className="spacer"
@@ -221,7 +281,7 @@ const App: React.FC = () => {
             startLon: position?.coords.longitude,
           })}
         >
-          Поехали
+          поехали
         </a>
       </div>
     </div>
