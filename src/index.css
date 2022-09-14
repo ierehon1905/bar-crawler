@@ -4,10 +4,6 @@
   line-height: 24px;
   font-weight: 400;
 
-  /* color-scheme: light dark; */
-  /* color: rgba(255, 255, 255, 0.87); */
-  /* background-color: #242424; */
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -56,7 +52,7 @@ body {
 .back-lit::after {
   transform: translate(10px, -10px);
   z-index: -2;
-  background-color: rgb(161 263 161);
+  background-color: var(--color-text);
 }
 
 .back-lit::before {
@@ -65,9 +61,12 @@ body {
   background-color: rgb(44 106 175);
 }
 
-.shadow-text {
-  /* text-shadow: 4px -4px rgb(44 106 175), 8px -8px rgb(26 18 121); */
+.triple-text {
+  color: var(--color-text);
+  text-shadow: 5px -5px blueviolet, 10px -10px rgb(26 18 121);
+}
 
+.shadow-text {
   letter-spacing: 8px;
   animation: rotate33dd 4s /*  */ /* cubic-bezier(0.45, 0.05, 0.55, 0.95) */
     cubic-bezier(0.48, -0.19, 0.2, 1) /* linear */ /*  */ 0s infinite normal
@@ -132,29 +131,13 @@ button {
   position: relative;
   height: 80px;
   width: 80px;
-  /* aspect-ratio: 1 / 1; */
 }
 
-.die,
-.dice > .die1,
-.dice > .die2,
-.dice > .die3 {
+.die {
   background-color: black;
   width: 20%;
   height: 20%;
   position: absolute;
   top: 0;
   left: 0;
-}
-.dice > .die1 {
-  top: 70%;
-  left: 10%;
-}
-.dice > .die2 {
-  top: 40%;
-  left: 40%;
-}
-.dice > .die3 {
-  top: 10%;
-  left: 70%;
 }

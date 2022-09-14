@@ -234,10 +234,6 @@ const Dice: React.FC<{ className?: string; value?: string }> = ({
           }}
         />
       ))}
-
-      {/* <div className="die1" />
-  <div className="die2" />
-  <div className="die3" /> */}
     </div>
   );
 };
@@ -249,9 +245,6 @@ const App: React.FC = () => {
   const [selectedBar, setSelectedBar] = useState<BarInfo | undefined>(
     bars[Math.trunc(Math.random() * bars.length)]
   );
-  const spacerRef = useRef<HTMLDivElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [spacerHeight, setSpacerHeight] = useState(0);
 
   useEffect(() => {
     if ("geolocation" in navigator) {
@@ -267,15 +260,6 @@ const App: React.FC = () => {
     }
   }, []);
 
-  useLayoutEffect(() => {
-    const rect = containerRef.current?.getBoundingClientRect();
-    const fullHeight = window.innerHeight;
-    const fullWidth = window.innerWidth;
-
-    const spacerHeight = fullHeight - rect!.y - rect!.height;
-    setSpacerHeight(spacerHeight);
-  }, []);
-
   return (
     <div>
       <div
@@ -288,10 +272,16 @@ const App: React.FC = () => {
           paddingBottom: "2em",
           height: "100vh",
         }}
-        ref={containerRef}
       >
         <div>
-          <h1>Bar crawler</h1>
+          <h1
+            className="triple-text"
+            style={{ lineHeight: "130%", fontSize: "3em" }}
+          >
+            <span style={{ position: "relative" }}>Bar</span>
+            <br />
+            <span style={{ color: "yellow" }}>crawler</span>
+          </h1>
 
           <button
             onClick={() => {
