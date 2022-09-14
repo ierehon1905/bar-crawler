@@ -166,6 +166,82 @@ function getTaxiUrl({
   return res;
 }
 
+const dieCordMap: Record<number, [number, number][]> = {
+  1: [[1, 1]],
+  2: [
+    [0, 0],
+    [2, 2],
+  ],
+  3: [
+    [0, 0],
+    [1, 1],
+    [2, 2],
+  ],
+  4: [
+    [0, 0],
+    [0, 2],
+    [2, 2],
+    [2, 0],
+  ],
+  5: [
+    [0, 0],
+    [0, 2],
+    [2, 2],
+    [2, 0],
+    [1, 1],
+  ],
+  6: [
+    [0, 0],
+    [0, 1],
+    [0, 2],
+    [2, 2],
+    [2, 1],
+    [2, 0],
+  ],
+};
+
+const Dice: React.FC<{ className?: string; value?: string }> = ({
+  className,
+  value,
+}) => {
+  const [diceValue, setDiceValue] = useState(3);
+  const [isRot, setIsRot] = useState(false);
+
+  useEffect(() => {
+    setIsRot(Math.random() > 0.5);
+    setDiceValue(Math.trunc(Math.random() * 6) + 1);
+  }, [value]);
+
+  const coords: [number, number][] = dieCordMap[diceValue].map((dot) => {
+    let cord = [...dot] as [number, number];
+    if (isRot) {
+      cord = [dot[1], -dot[0] + 2] as [number, number];
+    }
+    cord = [10 + 30 * cord[0], 10 + 30 * cord[1]] as [number, number];
+
+    return cord;
+  });
+
+  return (
+    <div className={"dice " + (className ? className : "")}>
+      {coords.map((coord, index) => (
+        <div
+          className="die"
+          key={index}
+          style={{
+            top: coord[0] + "%",
+            left: coord[1] + "%",
+          }}
+        />
+      ))}
+
+      {/* <div className="die1" />
+  <div className="die2" />
+  <div className="die3" /> */}
+    </div>
+  );
+};
+
 const App: React.FC = () => {
   const [position, setPosition] = useState<GeolocationPosition | undefined>(
     undefined
@@ -202,87 +278,109 @@ const App: React.FC = () => {
 
   return (
     <div>
-      <h1>Bar crawler</h1>
       <div
         style={{
           display: "flex",
           flexDirection: "column",
-          alignItems: "center",
+          alignItems: "stretch",
+          justifyContent: "space-between",
+          padding: "1em",
+          paddingBottom: "2em",
+          height: "100vh",
         }}
         ref={containerRef}
       >
-        <h2>{selectedBar?.[0]}</h2>
-        <button
-          onClick={() => {
-            const nextBars = [...bars];
-            const start: [number, number] | undefined = selectedBar
-              ? selectedBar[1]
-              : position
-              ? [position.coords.latitude, position.coords.longitude]
-              : undefined;
+        <div>
+          <h1>Bar crawler</h1>
 
-            if (!start) {
-              setSelectedBar(bars[Math.trunc(Math.random() * bars.length)]);
-              return;
-            }
+          <button
+            onClick={() => {
+              const nextBars = [...bars];
+              const start: [number, number] | undefined = selectedBar
+                ? selectedBar[1]
+                : position
+                ? [position.coords.latitude, position.coords.longitude]
+                : undefined;
 
-            const withDistance = nextBars
-              .filter((b) => b[0] !== selectedBar?.[0])
-              .map((a) => ({
-                bar: a,
-                distance: distance(start[0], a[1][0], start[1], a[1][1]),
-              }));
+              if (!start) {
+                setSelectedBar(bars[Math.trunc(Math.random() * bars.length)]);
+                return;
+              }
 
-            withDistance.sort((a, b) => a.distance - b.distance);
+              const withDistance = nextBars
+                .filter((b) => b[0] !== selectedBar?.[0])
+                .map((a) => ({
+                  bar: a,
+                  distance: distance(start[0], a[1][0], start[1], a[1][1]),
+                }));
 
-            const closest = withDistance.slice(0, 5);
+              withDistance.sort((a, b) => a.distance - b.distance);
 
-            console.log(closest.map((c) => c.distance));
+              const closest = withDistance.slice(0, 5);
 
-            const pick = closest[Math.trunc(Math.random() * closest.length)];
+              console.log(closest.map((c) => c.distance));
 
-            setSelectedBar(pick.bar);
-          }}
-          style={{
-            appearance: "none",
-            WebkitAppearance: "none",
-            border: "none",
-            fontSize: "1.7em",
-            backgroundColor: "yellow",
-            color: "black",
-            padding: "0.2em 0.5em",
-            borderRadius: "8px",
-          }}
-        >
-          другой
-        </button>
-        <div
-          className="spacer"
-          ref={spacerRef}
-          style={{ height: spacerHeight }}
-        ></div>
-        <a
-          style={{
-            display: "grid",
-            width: "50vw",
-            height: "50vw",
-            backgroundColor: "yellow",
-            color: "black",
-            textDecoration: "none",
-            borderRadius: "51%",
-            placeItems: "center",
-            fontSize: "2.5em",
-            marginBottom: 20,
-          }}
-          href={getTaxiUrl({
-            endLat: selectedBar![1][0],
-            endLon: selectedBar![1][1],
-            startLat: position?.coords.latitude,
-            startLon: position?.coords.longitude,
-          })}
-        >
-          поехали
-        </a>
+              const pick = closest[Math.trunc(Math.random() * closest.length)];
+
+              setSelectedBar(pick.bar);
+            }}
+            style={{
+              appearance: "none",
+              WebkitAppearance: "none",
+              border: "none",
+              fontSize: "1.7em",
+              backgroundColor: "black",
+              color: "white",
+              padding: 0,
+              justifyContent: "space-between",
+              alignItems: "center",
+              display: "flex",
+              width: "100%",
+            }}
+          >
+            <Dice className="dice-1" value={selectedBar?.[0]} />
+            <div style={{ padding: "0 0ch" }}>другой</div>
+            <Dice className="dice-2" value={selectedBar?.[0]} />
+          </button>
+        </div>
+        <div>
+          <div
+            className="back-lit"
+            style={{
+              padding: "1em",
+              color: "var(--color-text)",
+            }}
+          >
+            <h2>{selectedBar?.[0]}</h2>
+          </div>
+          <div style={{ height: "3em" }}></div>
+
+          <a
+            className="back-lit"
+            style={{
+              display: "grid",
+              width: "100%",
+              padding: "1em",
+              textDecoration: "none",
+              placeItems: "center",
+
+              fontSize: "2em",
+              // marginBottom: 20,
+            }}
+            href={getTaxiUrl({
+              endLat: selectedBar![1][0],
+              endLon: selectedBar![1][1],
+              startLat: position?.coords.latitude,
+              startLon: position?.coords.longitude,
+            })}
+          >
+            <span className="shadow-text">
+              <span className="main">ПОЕХАЛИ</span>
+              <span className="second">ПОЕХАЛИ</span>
+              <span className="third">ПОЕХАЛИ</span>
+            </span>
+          </a>
+        </div>
       </div>
     </div>
   );
