@@ -10,7 +10,7 @@ import { useGeo } from "./entities/geo";
 
 const barVariants = {
   randoming: {},
-  default: {}
+  default: {},
 }
 
 const randomBtnVariants = {
