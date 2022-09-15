@@ -10,6 +10,7 @@ type Props = {
 }
 
 export function Bar(p: Props) {
+    console.log(p.bar);
 
     const nameStyles = useMemo(() => {
         const fontSize = randomChoise([44, 42, 40, 38, 41]);

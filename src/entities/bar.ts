@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 
 import { barsData } from "../config/bars";
 import { distance } from "../utils/distance";
@@ -11,6 +11,11 @@ export type BarInfo = {
     coords: [number, number],
 }
 
+export type BarDistance = {
+    bar: BarInfo,
+    distance: number,
+}
+
 export function getBars() {
     return barsData;
 }
@@ -21,29 +26,45 @@ export function getRandomBar() {
     return randomChoise(bars);
 }
 
-export function getClosestBars(p: {currentBar?: BarInfo, position?: GeolocationPosition, max?: number}) {
-    const {currentBar, position, max = 10} = p;
+export function getBarDistance(coords: [number, number], bar: BarInfo): BarDistance {
+    return {
+        bar,
+        distance: distance(coords[0], bar.coords[0], coords[1], bar.coords[1])
+    }
+}
+
+export function getNextBars(p: {
+    currentBar?: BarInfo,
+    position?: GeolocationPosition,
+    findClosest?: boolean,
+    maxClosest?: number
+}) {
+    const {currentBar, position, maxClosest = 10, findClosest} = p;
 
     const bars = getBars();
 
-    const start: [number, number] | undefined = currentBar
-      ? currentBar.coords
-      : position
-      ? [position.coords.latitude, position.coords.longitude]
-      : undefined;
-
-    if(!start) {
-      return [];
+    if (!findClosest) {
+        return bars;
     }
 
-    const withDistance = bars
-      .filter((b) => b.name !== currentBar?.name)
-      .map((a) => ({
-        bar: a,
-        distance: distance(start[0], a.coords[0], start[1], a.coords[1]),
-      }));
+    let start: [number, number] | null = null;
+
+    if (position) {
+        start = [position.coords.latitude, position.coords.longitude]
+    } else if (currentBar) {
+        start = currentBar.coords 
+    }
+
+    if (!start) {
+      return bars;
+    }
+
+    const withDistance = bars.map((bar) => getBarDistance(start!, bar));
     
-    const closest = withDistance.slice(0, max);
+    const closest = withDistance
+        .sort((a, b) => a.distance - b.distance)
+        .slice(0, maxClosest)
+        .map(({bar}) => bar);
 
     return closest;
 }
@@ -52,20 +73,33 @@ export function useBar(p: {position?: GeolocationPosition, findClosest?: boolean
     const [currentBar, setCurrentBar] = useState<BarInfo | undefined>();
     const [displayedBar, setDisplayedBar] = useState<BarInfo>(() => currentBar || getRandomBar());
     const [isRandoming, setIsRandoming] = useState(false);
+    
+    const randomingInterval = useRef<number>();
+
+    const currentBarDistance = currentBar && p.position
+        ? getBarDistance([p.position.coords.latitude, p.position.coords.longitude], currentBar).distance
+        : 0;
 
     const candidates = useMemo(() => {
-        if (!p.findClosest) return getBars();
-
-        return getClosestBars({currentBar, position: p.position, max: 10})
+        return getNextBars({
+            currentBar,
+            position: p.position,
+            findClosest: p.findClosest,
+            maxClosest: 10
+        })
+    
     }, [currentBar, p.position, p.findClosest]);
 
     function randomizeBar() {
+        clearInterval(randomingInterval.current);
+
         setIsRandoming(true);
+
         let step = 0;
 
-        const interval = setInterval(() => {
+        randomingInterval.current = setInterval(() => {
             if (step > MAX_RANDOM_STEPS) {
-                clearInterval(interval)
+                clearInterval(randomingInterval.current)
                 setIsRandoming(false);
             } else {
                 step++
@@ -73,7 +107,7 @@ export function useBar(p: {position?: GeolocationPosition, findClosest?: boolean
 
             const candidate = randomChoise(candidates);
 
-            setDisplayedBar(candidate.bar);
+            setDisplayedBar(candidate);
         }, 300)
     }
 
@@ -83,6 +117,7 @@ export function useBar(p: {position?: GeolocationPosition, findClosest?: boolean
 
     return {
         currentBar,
+        currentBarDistance,
         displayedBar,
         selectCurrentBar,
         randomizeBar,
