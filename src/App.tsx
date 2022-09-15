@@ -1,7 +1,7 @@
 import {motion} from 'framer-motion';
 import React from "react";
 
-import { Bar } from "./components/Bar";
+import { Bar } from "./components/Bar/Bar";
 import { GoButton } from "./components/GoButton/GoButton";
 import { Menu } from "./components/Menu/Menu";
 import { useBar } from "./entities/bar";
