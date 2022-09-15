@@ -4,6 +4,7 @@ import React from "react";
 import { Bar } from "./components/Bar/Bar";
 import { GoButton } from "./components/GoButton/GoButton";
 import { Menu } from "./components/Menu/Menu";
+import { RandomButton } from "./components/RandomButton/RandomButton";
 import { useBar } from "./entities/bar";
 import { useCount } from "./entities/count";
 import { useGeo } from "./entities/geo";
@@ -15,7 +16,7 @@ const barVariants = {
 
 const randomBtnVariants = {
   randoming: {
-    opacity: 0,
+    opacity: 1,
   },
   default: {
     opacity: 1,
@@ -75,24 +76,7 @@ const App: React.FC = () => {
         animate={isRandoming ? 'randoming' : 'default'}
         transition={{delay: 0.1, duration: 0.1, bounce: 2}}
       >
-        <button
-          onClick={randomizeBar}
-          style={{
-            appearance: "none",
-            WebkitAppearance: "none",
-            border: "none",
-            fontSize: "1.7em",
-            backgroundColor: "black",
-            color: "white",
-            padding: 0,
-            justifyContent: "space-between",
-            alignItems: "center",
-            display: "flex",
-            width: "100%",
-          }}
-        >
-          <div style={{ padding: "0 0ch" }}>другой</div>
-        </button>
+        <RandomButton isRandoming={isRandoming} onClick={randomizeBar} />
       </motion.div>
     
       {!isRandoming && 
