@@ -11,8 +11,6 @@ type Props = {
 }
 
 export function Bar(p: Props) {
-    
-
     return (
         <motion.div className='Bar-root'>
             <span 
