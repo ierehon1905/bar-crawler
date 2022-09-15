@@ -7,6 +7,7 @@ import './Bar.css';
 
 type Props = {
     bar: BarInfo,
+    isRandoming?: boolean,
 }
 
 export function Bar(p: Props) {
@@ -32,7 +33,7 @@ export function Bar(p: Props) {
     return (
         <motion.div className='Bar-root'>
             <motion.span 
-                className='Bar-name animated'
+                className={`Bar-name ${p.isRandoming && 'animated'}`}
                 style={nameStyles}
             >
                 {p.bar.name}
