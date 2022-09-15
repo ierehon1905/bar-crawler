@@ -1,32 +1,9 @@
-import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
+
+import {distance} from '../utils/distance';
+import { Dice } from "./components/Dice";
 
 type BarInfo = [string, [number, number]];
-
-function distance(lat1: number, lat2: number, lon1: number, lon2: number) {
-  // The math module contains a function
-  // named toRadians which converts from
-  // degrees to radians.
-  lon1 = (lon1 * Math.PI) / 180;
-  lon2 = (lon2 * Math.PI) / 180;
-  lat1 = (lat1 * Math.PI) / 180;
-  lat2 = (lat2 * Math.PI) / 180;
-
-  // Haversine formula
-  const dlon = lon2 - lon1;
-  const dlat = lat2 - lat1;
-  const a =
-    Math.pow(Math.sin(dlat / 2), 2) +
-    Math.cos(lat1) * Math.cos(lat2) * Math.pow(Math.sin(dlon / 2), 2);
-
-  const c = 2 * Math.asin(Math.sqrt(a));
-
-  // Radius of earth in kilometers. Use 3956
-  // for miles
-  const r = 6371;
-
-  // calculate the result
-  return c * r;
-}
 
 // Moscow bbox
 // 55.911086, 37.369779 top left
@@ -166,82 +143,11 @@ function getTaxiUrl({
   return res;
 }
 
-const dieCordMap: Record<number, [number, number][]> = {
-  1: [[1, 1]],
-  2: [
-    [0, 0],
-    [2, 2],
-  ],
-  3: [
-    [0, 0],
-    [1, 1],
-    [2, 2],
-  ],
-  4: [
-    [0, 0],
-    [0, 2],
-    [2, 2],
-    [2, 0],
-  ],
-  5: [
-    [0, 0],
-    [0, 2],
-    [2, 2],
-    [2, 0],
-    [1, 1],
-  ],
-  6: [
-    [0, 0],
-    [0, 1],
-    [0, 2],
-    [2, 2],
-    [2, 1],
-    [2, 0],
-  ],
-};
-
-const Dice: React.FC<{ className?: string; value?: string }> = ({
-  className,
-  value,
-}) => {
-  const [diceValue, setDiceValue] = useState(3);
-  const [isRot, setIsRot] = useState(false);
-
-  useEffect(() => {
-    setIsRot(Math.random() > 0.5);
-    setDiceValue(Math.trunc(Math.random() * 6) + 1);
-  }, [value]);
-
-  const coords: [number, number][] = dieCordMap[diceValue].map((dot) => {
-    let cord = [...dot] as [number, number];
-    if (isRot) {
-      cord = [dot[1], -dot[0] + 2] as [number, number];
-    }
-    cord = [10 + 30 * cord[0], 10 + 30 * cord[1]] as [number, number];
-
-    return cord;
-  });
-
-  return (
-    <div className={"dice " + (className ? className : "")}>
-      {coords.map((coord, index) => (
-        <div
-          className="die"
-          key={index}
-          style={{
-            top: coord[0] + "%",
-            left: coord[1] + "%",
-          }}
-        />
-      ))}
-    </div>
-  );
-};
-
 const App: React.FC = () => {
   const [position, setPosition] = useState<GeolocationPosition | undefined>(
     undefined
   );
+
   const [selectedBar, setSelectedBar] = useState<BarInfo | undefined>(
     bars[Math.trunc(Math.random() * bars.length)]
   );
