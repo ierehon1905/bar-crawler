@@ -4,6 +4,7 @@ import { Bar } from "./components/Bar";
 import { Dice } from "./components/Dice";
 import { GoButton } from "./components/GoButton/GoButton";
 import { Menu } from "./components/Menu/Menu";
+import { RandomButton } from "./components/RandomButton/RandomButton";
 import { useBar } from "./entities/bar";
 import { useCount } from "./entities/count";
 import { useGeo } from "./entities/geo";
@@ -40,6 +41,7 @@ const App: React.FC = () => {
       </div>
 
       <div className="section" style={{marginTop: '52px'}}>
+      <RandomButton onClick={randomizeBar} />
         <button
           onClick={randomizeBar}
           style={{
