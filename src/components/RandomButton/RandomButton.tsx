@@ -34,13 +34,14 @@ export function RandomButton(p: Props) {
                 backgroundSize: 'cover',
                 position: 'absolute',
                 width: '100%',
-                height: '100%'
+                height: '100%',
+                opacity: 0
             }}
         />
         <span style={{
             position: 'relative',
             fontFamily: "'Press Start 2P'",
-            color: 'blue',
+            color: 'white',
             transform: 'skew(20deg)',
         }}>
             RANDOM
