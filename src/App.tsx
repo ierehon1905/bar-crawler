@@ -34,7 +34,7 @@ const App: React.FC = () => {
         <Menu count={count} />
       </div>
 
-
+    
       <div className="section" style={{marginTop: '24px'}}>
         <Bar bar={displayedBar} />
       </div>
