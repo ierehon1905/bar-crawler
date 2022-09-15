@@ -10,6 +10,7 @@
 .Bar-name {
     font-size: 44px;
     line-height: 120%;
+    text-align: center;
 }
 
 .Bar-name.animated {

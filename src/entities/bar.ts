@@ -108,7 +108,7 @@ export function useBar(p: {position?: GeolocationPosition, findClosest?: boolean
             const candidate = randomChoise(candidates);
 
             setDisplayedBar(candidate);
-        }, 300)
+        }, 250)
     }
 
     function selectCurrentBar() {
