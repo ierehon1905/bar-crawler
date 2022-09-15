@@ -1,4 +1,4 @@
-:root {
+:root, #root {
   font-family: "Press Start 2P", Inter, Avenir, Helvetica, Arial, sans-serif;
   font-size: 16px;
   line-height: 24px;
@@ -10,7 +10,7 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 
-  --color-text: rgb(161 263 161);
+  width: 100%;
 }
 
 html {
@@ -23,121 +23,45 @@ html {
   box-sizing: inherit;
 }
 
+.flex {
+  display: flex;
+}
+
+.w-100 {
+  width: 100%;
+}
+
 body {
   margin: 0;
   overflow: hidden;
-  /* display: flex;
-  place-items: center; */
-  /* min-width: 320px;
-  min-height: 100vh; */
-  background-color: indianred;
-}
 
-.back-lit {
-  position: relative;
-  margin-top: 10px;
-  background-color: blueviolet;
-}
-
-.back-lit::after,
-.back-lit::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-
-.back-lit::after {
-  transform: translate(10px, -10px);
-  z-index: -2;
-  background-color: var(--color-text);
-}
-
-.back-lit::before {
-  transform: translate(5px, -5px);
-  z-index: -1;
-  background-color: rgb(44 106 175);
-}
-
-.triple-text {
-  color: var(--color-text);
-  text-shadow: 5px -5px blueviolet, 10px -10px rgb(26 18 121);
-}
-
-.shadow-text {
-  letter-spacing: 8px;
-  animation: rotate33dd 4s /*  */ /* cubic-bezier(0.45, 0.05, 0.55, 0.95) */
-    cubic-bezier(0.48, -0.19, 0.2, 1) /* linear */ /*  */ 0s infinite normal
-    both;
-  position: relative;
-  transform-style: preserve-3d;
-  perspective: 800px;
-}
-
-.shadow-text > .main {
-  color: var(--color-text);
-  position: relative;
-  z-index: 3;
-}
-
-.shadow-text > .second {
-  position: absolute;
-  top: 0;
-  left: 0;
-  transform: translate3d(4px, 4px, -40px);
-  color: rgb(44 106 175);
-  z-index: 2;
-}
-
-.shadow-text > .third {
-  position: absolute;
-  top: 0;
-  left: 0;
-  transform: translate3d(8px, 8px, -80px);
-  color: rgb(26 18 121);
-  z-index: 1;
-}
-
-@keyframes rotate33dd {
-  0% {
-    transform: rotateX(30deg) rotateY(0);
-  }
-
-  25% {
-    transform: rotateX(0) rotateY(30deg);
-  }
-
-  50% {
-    transform: rotateX(-30deg) rotateY(0);
-  }
-
-  75% {
-    transform: rotateX(0) rotateY(-30deg);
-  }
-
-  100% {
-    transform: rotateX(30deg) rotateY(0);
-  }
-}
-
-button {
-  font-family: inherit;
-}
-
-.dice {
-  background-color: white;
-  position: relative;
-  height: 80px;
-  width: 80px;
-}
-
-.die {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background-color: black;
-  width: 20%;
-  height: 20%;
-  position: absolute;
-  top: 0;
-  left: 0;
+  color: white;
+  padding: 0 24px;
+}
+
+.main {
+  width: 100%;
+  max-width: 960px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo {
+  font-size: 22px;
+  text-align: center;
+  margin-top: 32px;
+  color: white;
+  font-weight: 400;
+  text-shadow: 0px 4px 4px rgba(237, 33, 241, 0.64);
+}
+
+.section {
+  display: flex;
+  width: 100%;
 }

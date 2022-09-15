@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 
 import {distance} from '../utils/distance';
 import {getTaxiUrl} from '../utils/taxi';
+import { Bar } from "./components/Bar";
 import { Dice } from "./components/Dice";
+import { Menu } from "./components/Menu/Menu";
 import { BarInfo, bars } from "./config/bars";
-
 
 const App: React.FC = () => {
   const [position, setPosition] = useState<GeolocationPosition | undefined>(
@@ -30,8 +31,23 @@ const App: React.FC = () => {
   }, []);
 
   return (
-    <div>
-      <div
+    <div className="main">
+      <div className="logo">
+        <span>BAR</span>
+        <br />
+        <span>CRAWLER</span>
+      </div>
+    
+    <div className="section" style={{marginTop: '53px'}}>
+      <Menu />
+    </div>
+
+
+    <div className="section" style={{marginTop: '24px'}}>
+      <Bar />
+    </div>
+
+      {/* <div
         style={{
           display: "flex",
           flexDirection: "column",
@@ -140,7 +156,7 @@ const App: React.FC = () => {
             </span>
           </a>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

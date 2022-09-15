@@ -1,0 +1,9 @@
+.root {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.score {
+    font-size: 36px;
+}
