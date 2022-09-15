@@ -1,11 +1,12 @@
 import {motion} from 'framer-motion';
 import React, { useMemo } from "react";
 
+import { BarInfo } from '../../entities/bar';
 import { randomChoise } from '../../utils/random';
 import './Bar.css';
 
 type Props = {
-    barName: string,
+    bar: BarInfo,
 }
 
 export function Bar(p: Props) {
@@ -25,7 +26,7 @@ export function Bar(p: Props) {
             textShadow: `0 ${shadowSize}px ${shadowOffset}px ${shadowColor}`
         }
         // eslint-disable-next-line
-    }, [p.barName])
+    }, [p.bar.name])
 
     return (
         <motion.div className='Bar-root'>
@@ -33,7 +34,7 @@ export function Bar(p: Props) {
                 className='Bar-name animated'
                 style={nameStyles}
             >
-                {p.barName}
+                {p.bar.name}
             </motion.span>
         </motion.div>
     )
