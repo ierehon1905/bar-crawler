@@ -27,7 +27,6 @@ export function GoButton(p: Props) {
 
     return (
         <a
-            className="go-btn"
             style={{
                 display: "grid",
                 width: "100%",

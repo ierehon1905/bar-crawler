@@ -1,20 +1,43 @@
-import React, { useState } from "react";
+import {motion} from 'framer-motion';
+import React from "react";
 
 import { Bar } from "./components/Bar";
-import { Dice } from "./components/Dice";
 import { GoButton } from "./components/GoButton/GoButton";
 import { Menu } from "./components/Menu/Menu";
 import { useBar } from "./entities/bar";
 import { useCount } from "./entities/count";
 import { useGeo } from "./entities/geo";
 
+const barVariants = {
+  randoming: {},
+  default: {}
+}
+
+const randomBtnVariants = {
+  randoming: {
+    opacity: 0,
+  },
+  default: {
+    opacity: 1,
+  }
+}
+
+const goBtnVariants = {
+  randoming: {
+    scale: 0.8,
+    opacity: 0,
+  },
+  default: {
+    scale: 1,
+    opacity: 1,
+  }
+}
 
 const App: React.FC = () => {
   const {position} = useGeo();
   const {count, tryIncrementCount} = useCount();
 
   const {
-    currentBar,
     selectCurrentBar,
     displayedBar,
     randomizeBar,
@@ -34,12 +57,24 @@ const App: React.FC = () => {
         <Menu count={count} />
       </div>
 
-    
-      <div className="section" style={{marginTop: '24px'}}>
+      <motion.div 
+        className="section" 
+        style={{marginTop: '24px'}}
+        variants={barVariants}
+        animate={isRandoming ? 'randoming' : 'default'}
+        transition={{delay: 0, duration: 0, bounce: 0}}
+      >
         <Bar bar={displayedBar} />
-      </div>
+      </motion.div>
 
-      <div className="section" style={{marginTop: '52px'}}>
+
+      <motion.div 
+        className="section" 
+        style={{marginTop: '52px', pointerEvents: isRandoming ? 'none' : 'all'}}
+        variants={randomBtnVariants}
+        animate={isRandoming ? 'randoming' : 'default'}
+        transition={{delay: 0.1, duration: 0.1, bounce: 2}}
+      >
         <button
           onClick={randomizeBar}
           style={{
@@ -58,14 +93,22 @@ const App: React.FC = () => {
         >
           <div style={{ padding: "0 0ch" }}>другой</div>
         </button>
-      </div>
+      </motion.div>
     
       {!isRandoming && 
-        <GoButton 
-          bar={displayedBar}
-          selectCurrentBar={selectCurrentBar}
-          tryIncrementCount={tryIncrementCount}
-        />
+        <motion.div 
+          className="go-btn" 
+          style={{pointerEvents: isRandoming ? 'none' : 'all'}}
+          variants={goBtnVariants}
+          animate={isRandoming ? 'randoming' : 'default'}
+          transition={{delay: 0.1, duration: 0.1, bounce: 2}}
+        >
+            <GoButton 
+              bar={displayedBar}
+              selectCurrentBar={selectCurrentBar}
+              tryIncrementCount={tryIncrementCount}
+            />
+        </motion.div>
       }
     </div>
   );
