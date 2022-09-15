@@ -1,5 +1,5 @@
 import {motion} from 'framer-motion';
-import React from "react";
+import React, { useMemo } from "react";
 
 import { Bar } from "./components/Bar/Bar";
 import { GoButton } from "./components/GoButton/GoButton";
@@ -8,6 +8,7 @@ import { RandomButton } from "./components/RandomButton/RandomButton";
 import { useBar } from "./entities/bar";
 import { useCount } from "./entities/count";
 import { useGeo } from "./entities/geo";
+import { generateTextStyle } from './utils/styling/generate-style';
 
 const barVariants = {
   randoming: {},
@@ -46,6 +47,12 @@ const App: React.FC = () => {
   } = useBar({position, findClosest: Boolean(count)});
 
 
+  const textStyle = useMemo(() => {
+    return generateTextStyle(displayedBar.name)
+    // eslint-disable-next-line
+}, [displayedBar.name])
+
+
   return (
     <div className="main">
       <div className="logo">
@@ -60,18 +67,18 @@ const App: React.FC = () => {
 
       <motion.div 
         className="section" 
-        style={{marginTop: '24px'}}
+        style={{marginTop: '0px'}}
         variants={barVariants}
         animate={isRandoming ? 'randoming' : 'default'}
         transition={{delay: 0, duration: 0, bounce: 0}}
       >
-        <Bar bar={displayedBar} isRandoming={isRandoming} />
+        <Bar bar={displayedBar} textStyle={textStyle} isRandoming={isRandoming} />
       </motion.div>
 
 
       <motion.div 
         className="section" 
-        style={{marginTop: '52px', pointerEvents: isRandoming ? 'none' : 'all'}}
+        style={{marginTop: '2px', pointerEvents: isRandoming ? 'none' : 'all'}}
         variants={randomBtnVariants}
         animate={isRandoming ? 'randoming' : 'default'}
         transition={{delay: 0.1, duration: 0.1, bounce: 2}}
@@ -89,6 +96,7 @@ const App: React.FC = () => {
         >
             <GoButton 
               bar={displayedBar}
+              textStyle={textStyle}
               selectCurrentBar={selectCurrentBar}
               tryIncrementCount={tryIncrementCount}
             />

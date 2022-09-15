@@ -11,6 +11,7 @@
   -webkit-text-size-adjust: 100%;
 
   width: 100%;
+  overflow: hidden;
 }
 
 html {
@@ -42,6 +43,7 @@ body {
   background-color: black;
   color: white;
   padding: 0 24px;
+  overflow: hidden;
 }
 
 .main {
@@ -69,4 +71,26 @@ body {
 .go-btn {
   position: absolute;
   bottom: 24px;
+  width: 100%;
+  padding: 8px 0;
+  display: flex;
+  flex-direction: row;
+}
+
+.blinking {
+  animation: epileptic infinite .1s;
+}
+
+@keyframes epileptic {
+  0% {
+      opacity: 1;
+  }
+
+  50% {
+      opacity: 0.7;
+  }
+
+  100% {
+      opacity: 1;
+  }
 }

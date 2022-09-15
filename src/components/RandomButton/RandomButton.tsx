@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import React from "react";
-import glyphGif from './glitch.gif';
 
 type Props = {
     onClick?: ()=>void;
@@ -18,14 +17,14 @@ export function RandomButton(p: Props) {
     return (
         <motion.button
             animate={animate}
-            transition={defaultTransition}
+            transition={{...defaultTransition, duration: 0.1}}
             className="rand-btn"
             style={{
                 position: 'relative',
                 appearance: "none",
                 WebkitAppearance: "none",
                 border: "none",
-                fontSize: "1.7em",
+                fontSize: "22px",
                 backgroundColor: "black",
                 color: "white",
                 padding: "20px",
@@ -37,7 +36,10 @@ export function RandomButton(p: Props) {
             }}
             variants={{
                 randoming: {
-                    transform: 'skew(-20deg)'
+                    // transform: 'skew(-60deg)',
+                    // rotate: '90deg',
+                    scale: 0.8,
+                    opacity: 0
                 },
             }}
             onClick={p.onClick}
@@ -46,7 +48,6 @@ export function RandomButton(p: Props) {
             animate={animate}
             transition={defaultTransition}
             style={{
-                backgroundImage: `url('${glyphGif}')`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center bottom',
                 position: 'absolute',
@@ -70,7 +71,7 @@ export function RandomButton(p: Props) {
                 transform: 'skew(0deg)',
             }}
         >
-            RANDOM
+            NEXT
         </motion.span>
           
       </motion.button>

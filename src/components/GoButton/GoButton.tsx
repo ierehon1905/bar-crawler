@@ -8,6 +8,7 @@ type Props = {
     position?: GeolocationPosition,
     selectCurrentBar: () => void,
     tryIncrementCount: () => void,
+    textStyle: any,
 }
 
 export function GoButton(p: Props) {
@@ -20,7 +21,6 @@ export function GoButton(p: Props) {
 
 
     function onClick() {
-        console.log('Bar selected');
         p.selectCurrentBar();
         p.tryIncrementCount();
     }
@@ -31,17 +31,17 @@ export function GoButton(p: Props) {
                 display: "grid",
                 width: "100%",
                 padding: "1em",
-                textDecoration: "none",
-                placeItems: "center",
-
-                fontSize: "2em",
+                ...(p.textStyle || {}),
                 // marginBottom: 20,
             }}
+            className="blinking"
             href={barUrl}
             onClick={onClick}
       >
         <span className="shadow-text">
-          <span className="main">ПОЕХАЛИ</span>
+          <span className="main">
+            GO
+          </span>
         </span>
       </a>
     )

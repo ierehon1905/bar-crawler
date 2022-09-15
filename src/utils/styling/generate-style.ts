@@ -18,7 +18,7 @@ export function generateTextStyle(text: string) {
 
     
     const {color: shadowColor} = randomChoise(shadowColors);
-    const shadowSize = randomChoise([0, 4, 9, 5]);
+    const shadowSize = randomChoise([0, 4, 2, 5]);
     const shadowOffset = randomChoise([2, 4, 5]);
 
     const rotate = randomChoise(['-2deg', '2deg', 0, 0, 0, 0, 0])
