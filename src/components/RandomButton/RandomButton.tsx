@@ -1,15 +1,24 @@
+import { motion } from "framer-motion";
 import React from "react";
 import glyphGif from './glitch.gif';
 
 type Props = {
-    onClick: ()=>void;
+    onClick?: ()=>void;
+    isRandoming?: boolean;
+}
+
+const defaultTransition = {
+    type: "spring"
 }
 
 export function RandomButton(p: Props) {
 
+    const animate = p.isRandoming ? 'randoming' : 'default';
 
     return (
-        <button
+        <motion.button
+            animate={animate}
+            transition={defaultTransition}
             className="rand-btn"
             style={{
                 position: 'relative',
@@ -20,33 +29,50 @@ export function RandomButton(p: Props) {
                 backgroundColor: "black",
                 color: "white",
                 padding: "20px",
-                transform: 'skew(-20deg)',
+                transform: 'skew(0deg)',
                 justifyContent: "center",
                 alignItems: "center",
                 display: "flex",
                 width: "100%",
             }}
+            variants={{
+                randoming: {
+                    transform: 'skew(-20deg)'
+                },
+            }}
             onClick={p.onClick}
       >
-        <div 
+        <motion.div 
+            animate={animate}
+            transition={defaultTransition}
             style={{
                 backgroundImage: `url('${glyphGif}')`,
                 backgroundSize: 'cover',
+                backgroundPosition: 'center bottom',
                 position: 'absolute',
                 width: '100%',
                 height: '100%',
-                opacity: 0
+                opacity: 0,
+            }}
+            variants={{
+                randoming: {
+                    opacity: 1
+                },
             }}
         />
-        <span style={{
-            position: 'relative',
-            fontFamily: "'Press Start 2P'",
-            color: 'white',
-            transform: 'skew(20deg)',
-        }}>
+        <motion.span 
+            animate={animate}
+            transition={defaultTransition}
+            style={{
+                position: 'relative',
+                fontFamily: "'Press Start 2P'",
+                color: p.isRandoming ? 'white' : 'white',
+                transform: 'skew(0deg)',
+            }}
+        >
             RANDOM
-        </span>
+        </motion.span>
           
-      </button>
+      </motion.button>
     )
 }

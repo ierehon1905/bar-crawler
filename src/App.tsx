@@ -16,7 +16,7 @@ const barVariants = {
 
 const randomBtnVariants = {
   randoming: {
-    opacity: 0,
+    opacity: 1,
   },
   default: {
     opacity: 1,
@@ -76,7 +76,7 @@ const App: React.FC = () => {
         animate={isRandoming ? 'randoming' : 'default'}
         transition={{delay: 0.1, duration: 0.1, bounce: 2}}
       >
-        <RandomButton onClick={randomizeBar} />
+        <RandomButton isRandoming={isRandoming} onClick={randomizeBar} />
       </motion.div>
     
       {!isRandoming && 
