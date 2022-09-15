@@ -65,3 +65,8 @@ body {
   display: flex;
   width: 100%;
 }
+
+.go-btn {
+  position: absolute;
+  bottom: 24px;
+}
