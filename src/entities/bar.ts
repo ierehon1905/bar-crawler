@@ -60,7 +60,10 @@ export function useBar(p: {position?: GeolocationPosition, findClosest?: boolean
     }, [currentBar, p.position, p.findClosest]);
 
     function randomizeBar() {
+        if (isRandoming) return;
+
         setIsRandoming(true);
+
         let step = 0;
 
         const interval = setInterval(() => {
