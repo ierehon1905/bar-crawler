@@ -29,35 +29,37 @@ export function GoButton(p: Props) {
 
     return (
       <motion.div 
-        className="go-btn blinking" 
+        className="go-btn blinking-medium" 
         style={{
           pointerEvents: p.isRandoming ? 'none' : 'all',
-          backgroundColor: p.textStyle.color,
-          boxShadow: p.textStyle.textShadow,
+          display: p.isRandoming ? 'none' : 'block',
+          // backgroundColor: p.textStyle.color,
+          // boxShadow: p.textStyle.textShadow,
         }}
         variants={{
           randoming: {
             scaleY: 0,
             scaleX: 2,
             opacity: 0,
-            transition: {delay: 0.1, duration: 0.2, bounce: 2}
+            // transition: {delay: 0.1, duration: 0.2, bounce: 2}
           },
           default: {
             scaleY: 1,
             scaleX: 1,
             opacity: 1,
-            transition: {delay: 0.3, duration: 0.2, bounce: 2}
+            // transition: {delay: 0.3, duration: 0.2, bounce: 2}
           }
         }}
-        animate={p.isRandoming ? 'randoming' : 'default'}
+        animate={'default'}
+        // animate={p.isRandoming ? 'randoming' : 'default'}
       >
         <a
           style={{
               display: "flex",
               width: "100%",
-              textDecoration: "none",
+              // textDecoration: "none",
               ...(p.textStyle || {}),
-              color: "black",
+              // color: "black",
               // textShadow: 'none',
               height: 100,
               alignItems: 'center',

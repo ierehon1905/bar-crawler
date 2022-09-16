@@ -52,8 +52,8 @@ export function Bar(p: Props) {
                                     }
                                 }}
                                 initial='default'
-                                animate={!p.isRandoming ? 'randoming' : 'default'}
-
+                                animate={'default'}
+                                // animate={!p.isRandoming ? 'randoming' : 'default'}
                             >
                                 {char}
                             </motion.span>

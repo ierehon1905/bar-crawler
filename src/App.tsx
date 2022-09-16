@@ -37,7 +37,7 @@ const App: React.FC = () => {
 
   return (
     <>
-      <GlitchNoiseBackground isVisible={isRandomingStopping} />
+      {/* <GlitchNoiseBackground isVisible={isRandomingStopping} /> */}
       <div className="main">
         <div className="logo">
           <span>BAR</span>

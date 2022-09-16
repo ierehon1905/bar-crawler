@@ -42,9 +42,10 @@ export function RandomButton(p: Props) {
                 randoming: {
                     // transform: 'skew(-60deg)',
                     // rotate: '90deg',
-                    transform: 'skew(-90deg)',
+                    // transform: 'skew(-90deg)',
                     // scale: 0.8,
-                    opacity: 0
+                    // opacity: 0
+                    display: 'none'
                 },
             }}
             onClick={p.onClick}
@@ -76,7 +77,7 @@ export function RandomButton(p: Props) {
                 transform: 'skew(0deg)',
             }}
         >
-            ДАЛЬШЕ
+            NEXT
         </motion.span>
           
       </motion.button>
