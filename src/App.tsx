@@ -56,7 +56,7 @@ const App: React.FC = () => {
           animate={isRandoming ? 'randoming' : 'default'}
           transition={{delay: 0, duration: 0, bounce: 0}}
         >
-          <Bar bar={displayedBar} textStyle={textStyle} isRandoming={isRandoming} />
+          <Bar bar={displayedBar} textStyle={textStyle} isRandoming={isRandoming}/>
         </motion.div>
 
 

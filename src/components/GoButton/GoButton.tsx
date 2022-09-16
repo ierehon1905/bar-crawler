@@ -40,15 +40,16 @@ export function GoButton(p: Props) {
             scaleY: 0,
             scaleX: 2,
             opacity: 0,
+            transition: {delay: 0.1, duration: 0.2, bounce: 2}
           },
           default: {
             scaleY: 1,
             scaleX: 1,
             opacity: 1,
+            transition: {delay: 0.3, duration: 0.2, bounce: 2}
           }
         }}
         animate={p.isRandoming ? 'randoming' : 'default'}
-        transition={{delay: 0.1, duration: 0.2, bounce: 2}}
       >
         <a
           style={{

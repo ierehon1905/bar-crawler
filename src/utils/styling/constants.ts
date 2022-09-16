@@ -1,15 +1,15 @@
 
 export const fontFamilies = [
-    {font: "'Audiowide', cursive", weight: 'bold'},
+    {font: "'Audiowide', cursive", weight: 'bold', sizeMul: 0.9},
     // {font: "'Blaka Ink', cursive"}, // yebanutyi
     {font: "'Eater', cursive"},
     {font: "'Faster One', cursive"},
     {font: "'Grenze Gotisch', cursive"},
     {font: "'Irish Grover', cursive"},
-    {font: "'Major Mono Display', monospace"},
+    {font: "'Major Mono Display', monospace", sizeMul: 0.9},
     {font: "'Monoton', cursive"},
     {font: "'Nabla', cursive"},
-    {font: "'Orbitron', sans-serif"},
+    {font: "'Orbitron', sans-serif", sizeMul: 0.9},
     {font: "'Press Start 2P', cursive", sizeMul: 0.7, cyrillic: true},
     {font: "'Reenie Beanie', cursive", sizeMul: 1.5},
     {font: "'Rubik Glitch', cursive", cyrillic: true},
