@@ -5,9 +5,9 @@ import { BarInfo } from '../../entities/bar';
 import './Bar.css';
 
 type Props = {
-    bar: BarInfo,
-    isRandoming?: boolean,
-    textStyle?: any,
+    bar: BarInfo;
+    isRandoming?: boolean;
+    textStyle?: any;
 }
 
 export function Bar(p: Props) {

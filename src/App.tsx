@@ -15,15 +15,6 @@ const barVariants = {
   default: {},
 }
 
-const randomBtnVariants = {
-  randoming: {
-    opacity: 1,
-  },
-  default: {
-    opacity: 1,
-  }
-}
-
 const goBtnVariants = {
   randoming: {
     scale: 0.8,
@@ -79,9 +70,6 @@ const App: React.FC = () => {
       <motion.div 
         className="section" 
         style={{marginTop: '2px', pointerEvents: isRandoming ? 'none' : 'all'}}
-        variants={randomBtnVariants}
-        animate={isRandoming ? 'randoming' : 'default'}
-        transition={{delay: 0.1, duration: 0.1, bounce: 2}}
       >
         <RandomButton isRandoming={isRandoming} onClick={randomizeBar} />
       </motion.div>

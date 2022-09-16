@@ -17,7 +17,7 @@ export function generateTextStyle(text: string) {
     const {color} = randomChoise(colors);
 
     
-    const {color: shadowColor} = randomChoise(shadowColors);
+    const {color: shadowColor} = randomChoise(shadowColors.filter((c) => c.color !== color));
     const shadowSize = randomChoise([0, 4, 2, 5]);
     const shadowOffset = randomChoise([2, 4, 5]);
 

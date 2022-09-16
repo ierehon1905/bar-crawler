@@ -7,7 +7,11 @@ type Props = {
 }
 
 const defaultTransition = {
-    type: "spring"
+    delay: 0.1, 
+    duration: 0.2,
+    opacity: {
+        delay: 0.05, 
+    }
 }
 
 export function RandomButton(p: Props) {
@@ -17,7 +21,7 @@ export function RandomButton(p: Props) {
     return (
         <motion.button
             animate={animate}
-            transition={{...defaultTransition, duration: 0.1}}
+            transition={defaultTransition}
             className="rand-btn"
             style={{
                 position: 'relative',
@@ -38,7 +42,8 @@ export function RandomButton(p: Props) {
                 randoming: {
                     // transform: 'skew(-60deg)',
                     // rotate: '90deg',
-                    scale: 0.8,
+                    transform: 'skew(-90deg)',
+                    // scale: 0.8,
                     opacity: 0
                 },
             }}
@@ -71,7 +76,7 @@ export function RandomButton(p: Props) {
                 transform: 'skew(0deg)',
             }}
         >
-            NEXT
+            ДАЛЬШЕ
         </motion.span>
           
       </motion.button>
