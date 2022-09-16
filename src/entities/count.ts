@@ -84,15 +84,11 @@ export function useCount() {
         resetCount()
     }
 
-    useEffect(function autoIncrementEff() {
-        if (!attemptIncrementTimestamp) return;
-
+    if (attemptIncrementTimestamp) {
         if (dayjs().diff(attemptIncrementTimestamp, 'minutes') > INCREMENT_AFTER_MINUTES) {
             incrementCount();
         }
-
-    }, [attemptIncrementTimestamp, incrementCount])
-
+    }
 
     return {
         count, 
