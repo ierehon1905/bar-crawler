@@ -73,6 +73,7 @@ export function useBar(p: {position?: GeolocationPosition, findClosest?: boolean
     const [currentBar, setCurrentBar] = useState<BarInfo | undefined>();
     const [displayedBar, setDisplayedBar] = useState<BarInfo>(() => currentBar || getRandomBar());
     const [isRandoming, setIsRandoming] = useState(false);
+    const [isRandomingStopping, setIsRandomingStopping] = useState(false);
     
     const randomingInterval = useRef<number>();
 
@@ -94,8 +95,10 @@ export function useBar(p: {position?: GeolocationPosition, findClosest?: boolean
         clearInterval(randomingInterval.current);
 
         setIsRandoming(true);
+        setIsRandomingStopping(true);
 
         let step = 0;
+
 
         randomingInterval.current = setInterval(() => {
             if (step > MAX_RANDOM_STEPS) {
@@ -104,11 +107,14 @@ export function useBar(p: {position?: GeolocationPosition, findClosest?: boolean
             } else {
                 step++
             }
+            if(step > MAX_RANDOM_STEPS) {
+                setIsRandomingStopping(false);
+            }
 
             const candidate = randomChoise(candidates);
 
             setDisplayedBar(candidate);
-        }, 250)
+        }, 350)
     }
 
     function selectCurrentBar() {
@@ -122,6 +128,7 @@ export function useBar(p: {position?: GeolocationPosition, findClosest?: boolean
         selectCurrentBar,
         randomizeBar,
         isRandoming,
+        isRandomingStopping,
     }
 
 }

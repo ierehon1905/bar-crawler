@@ -23,9 +23,11 @@ export function generateTextStyle(text: string) {
 
     const rotate = randomChoise(['-2deg', '2deg', 0, 0, 0, 0, 0])
 
+    const fontSizeCorrected = sizeMul ? fontSize*sizeMul : fontSize;
+
     return {
         fontFamily: font,
-        fontSize: sizeMul ? fontSize*sizeMul : fontSize,
+        fontSize: `min(${fontSizeCorrected}px, ${fontSizeCorrected/4}vw)`,
         color,
         textShadow: `0 ${shadowSize}px ${shadowOffset}px ${shadowColor}`,
         transform: `rotate(${rotate})`,

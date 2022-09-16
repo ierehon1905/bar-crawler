@@ -11,7 +11,7 @@ export const fontFamilies = [
     {font: "'Nabla', cursive"},
     {font: "'Orbitron', sans-serif"},
     {font: "'Press Start 2P', cursive", sizeMul: 0.7, cyrillic: true},
-    {font: "'Reenie Beanie', cursive", sizeMul: 1.3},
+    {font: "'Reenie Beanie', cursive", sizeMul: 1.5},
     {font: "'Rubik Glitch', cursive", cyrillic: true},
     {font: "'Rubik Iso', cursive", cyrillic: true},
     {font: "'Rubik Puddles', cursive", cyrillic: true},

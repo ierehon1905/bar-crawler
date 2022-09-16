@@ -65,7 +65,7 @@ export const barsData: BarInfo[] = [
         ]
     },
     {
-        "name": "St Peter’s & St Anton",
+        "name": "St Peter’s & St Anton",
         "coords": [
             55.756368,
             37.60974
@@ -135,7 +135,7 @@ export const barsData: BarInfo[] = [
         ]
     },
     {
-        "name": "PasternakBar",
+        "name": "Pasternak Bar",
         "coords": [
             55.770701,
             37.596425
@@ -165,9 +165,9 @@ export const barsData: BarInfo[] = [
 // "Мюнхен",
 // "The Left Bank",
 // "Джонни Грин паб",
-// " O’DONOGHUE’S",
+// "O’DONOGHUE’S",
 // "Почтмейстер",
-// "Sally o Brien’s",
+// "Sally o Brien’s",
 // "Пилзнер",
 // "Madman",
 // "Hungry Fox",

@@ -36,7 +36,7 @@ export function RandomButton(p: Props) {
                 justifyContent: "center",
                 alignItems: "center",
                 display: "flex",
-                width: "100%",
+                margin: "0 auto",
             }}
             variants={{
                 randoming: {

@@ -1,14 +1,16 @@
+import { motion } from "framer-motion";
 import React from "react"
 
 import { BarInfo } from "../../entities/bar"
 import { getTaxiUrl } from "../../utils/taxi"
 
 type Props = {
-    bar: BarInfo
-    position?: GeolocationPosition,
-    selectCurrentBar: () => void,
-    tryIncrementCount: () => void,
-    textStyle: any,
+    bar: BarInfo;
+    position?: GeolocationPosition;
+    selectCurrentBar: () => void;
+    tryIncrementCount: () => void;
+    textStyle: any;
+    isRandoming: boolean;
 }
 
 export function GoButton(p: Props) {
@@ -26,23 +28,49 @@ export function GoButton(p: Props) {
     }
 
     return (
-        <a
-            style={{
-                display: "grid",
-                width: "100%",
-                padding: "1em",
-                ...(p.textStyle || {}),
-                // marginBottom: 20,
-            }}
-            className="blinking"
-            href={barUrl}
-            onClick={onClick}
+      <motion.div 
+        className="go-btn blinking" 
+        style={{
+          pointerEvents: p.isRandoming ? 'none' : 'all',
+          backgroundColor: p.textStyle.color,
+          boxShadow: p.textStyle.textShadow,
+        }}
+        variants={{
+          randoming: {
+            scaleY: 0,
+            scaleX: 2,
+            opacity: 0,
+          },
+          default: {
+            scaleY: 1,
+            scaleX: 1,
+            opacity: 1,
+          }
+        }}
+        animate={p.isRandoming ? 'randoming' : 'default'}
+        transition={{delay: 0.1, duration: 0.2, bounce: 2}}
       >
-        <span className="shadow-text">
-          <span className="main">
-            GO
+        <a
+          style={{
+              display: "flex",
+              width: "100%",
+              textDecoration: "none",
+              ...(p.textStyle || {}),
+              color: "black",
+              // textShadow: 'none',
+              height: 100,
+              alignItems: 'center',
+              justifyContent: 'center',
+              // marginBottom: 20,
+          }}
+          // className="blinking"
+          href={barUrl}
+          onClick={onClick}
+        >
+          <span className="shadow-text">
+              GO
           </span>
-        </span>
-      </a>
+        </a>
+      </motion.div>
     )
 }

@@ -16,7 +16,7 @@ export function Bar(p: Props) {
     return (
         <motion.div className='Bar-root'>
             <span 
-                className={`Bar-name ${p.isRandoming && 'blinking'}`}
+                className={`Bar-name ${p.isRandoming && 'blinking-medium'}`}
                 style={p.textStyle}
             >
                 {p.bar.name}
