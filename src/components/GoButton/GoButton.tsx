@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import React from "react"
+import React from 'react';
+import './GoButton.css';
 
 import { BarInfo } from "../../entities/bar"
 import { getTaxiUrl } from "../../utils/taxi"
@@ -34,28 +35,15 @@ export function GoButton(p: Props) {
           pointerEvents: p.isRandoming ? 'none' : 'all',
           display: p.isRandoming ? 'none' : 'block',
         }}
-        variants={{
-          randoming: {
-            scaleY: 0,
-            scaleX: 2,
-            opacity: 0,
-          },
-          default: {
-            scaleY: 1,
-            scaleX: 1,
-            opacity: 1,
-          }
-        }}
-        animate={'default'}
       >
         <a
           style={{
               display: "flex",
-              width: "100%",
               ...(p.textStyle || {}),
-              height: 100,
               alignItems: 'center',
               justifyContent: 'center',
+              fontSize: '60px',
+              height: '60px',
           }}
           href={barUrl}
           onClick={onClick}
