@@ -18,6 +18,7 @@ type Props = {
     children: ReactNode,
     onClose?: () => void,
     hideCloseButton?: boolean,
+    color?: string,
 }
     
 export function Modal(p: Props) {
@@ -30,21 +31,35 @@ export function Modal(p: Props) {
                 initial="hidden"
                 animate="visible"
                 className="Modal-content"
+                style={p.color ? {borderColor: p.color} : {}}
             >
-                <div className="Modal-header">
+                <div 
+                    className="Modal-header"
+                >
 
-                    <div className="Modal-title">
+                    <div 
+                        className="Modal-title"
+                        style={p.color ? {color: p.color} : {}}
+                    >
                         Menu
                     </div>
 
                     {!p.hideCloseButton && 
-                        <div className="Modal-close-btn" onClick={p.onClose} >
+                        <div 
+                            className="Modal-close-btn"
+                            onClick={p.onClose}
+                            style={p.color ? {color: p.color} : {}}
+                        >
                             x
                         </div>
                     }
                 </div>
 
-                <div className="Modal-divider"></div>
+                <div 
+                    className="Modal-divider" 
+                    style={p.color ? {backgroundColor: p.color} : {}}
+                />
+
 
                 <div className="Modal-body">
                     {p.children}

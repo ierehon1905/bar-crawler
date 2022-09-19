@@ -84,7 +84,7 @@ const [isModalVisible, setIsModalVisible] = useState(false);
 
 
         {isModalVisible && 
-          <Modal onClose={() => setIsModalVisible(false)} >
+          <Modal onClose={() => setIsModalVisible(false)} color={textStyle?.color} >
             Kek
          </Modal>
         }
