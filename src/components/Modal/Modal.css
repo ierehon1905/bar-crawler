@@ -1,0 +1,71 @@
+.Modal-paranja {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.9);
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.Modal-content {
+    background: #000;
+    border: 1px solid #aaa;
+    border-radius: 2px;
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+    max-width: 90vw;
+    position: relative;
+}
+
+.Modal-header {
+    display: flex;
+    padding: 12px 22px;
+    width: 100%;
+}
+
+.Modal-divider {
+    height: 1px;
+    width: 100%;
+    background: #aaa;
+    margin: 0 auto;
+}
+
+.Modal-body {
+    padding: 12px 22px;
+    max-height: 400px;
+    overflow-y: auto;
+    padding-bottom: 62px;
+    font-size: 14px;
+}
+
+.Modal-title {
+    color: #aaa;
+    max-width: 70%;
+    font-size: 14px;
+}
+
+.Modal-close-btn {
+    cursor: pointer;
+    position: absolute;
+    right: 8px;
+    top: 2px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #aaa;
+    font-size: 22px;
+}

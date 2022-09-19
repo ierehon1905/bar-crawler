@@ -85,32 +85,13 @@ body {
   animation: epileptic infinite .1s;
 }
 
-
-.blinking-medium {
-  animation: epilepticMedium infinite .1s;
-}
-
-@keyframes epilepticMedium {
-  0% {
-      opacity: 1;
-  }
-
-  50% {
-      opacity: 0.5;
-  }
-
-  100% {
-      opacity: 1;
-  }
-}
-
 @keyframes epileptic {
   0% {
       opacity: 1;
   }
 
   50% {
-      opacity: 0.9;
+      opacity: 0.7;
   }
 
   100% {

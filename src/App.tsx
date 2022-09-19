@@ -1,10 +1,10 @@
-import {motion} from 'framer-motion';
-import React, { useMemo } from "react";
+import {AnimatePresence, motion} from 'framer-motion';
+import React, { useMemo, useState } from "react";
 
 import { Bar } from "./components/Bar/Bar";
-import { GlitchNoiseBackground } from './components/GlitchNoiseBackground/GlitchNoiseBackground';
 import { GoButton } from "./components/GoButton/GoButton";
 import { Menu } from "./components/Menu/Menu";
+import { Modal } from './components/Modal/Modal';
 import { RandomButton } from "./components/RandomButton/RandomButton";
 import { useBar } from "./entities/bar";
 import { useCount } from "./entities/count";
@@ -34,10 +34,11 @@ const App: React.FC = () => {
     // eslint-disable-next-line
 }, [displayedBar.name])
 
+const [isModalVisible, setIsModalVisible] = useState(false);
+
 
   return (
     <>
-      {/* <GlitchNoiseBackground isVisible={isRandomingStopping} /> */}
       <div className="main">
         <div className="logo">
           <span>BAR</span>
@@ -56,7 +57,13 @@ const App: React.FC = () => {
           animate={isRandoming ? 'randoming' : 'default'}
           transition={{delay: 0, duration: 0, bounce: 0}}
         >
-          <Bar bar={displayedBar} textStyle={textStyle} isRandoming={isRandoming}/>
+          <Bar 
+            bar={displayedBar}
+            textStyle={textStyle}
+            isRandoming={isRandoming}
+            onNameClick={() => setIsModalVisible(true)}
+            
+          />
         </motion.div>
 
 
@@ -74,6 +81,14 @@ const App: React.FC = () => {
           selectCurrentBar={selectCurrentBar}
           tryIncrementCount={tryIncrementCount}
         />
+
+
+        {isModalVisible && 
+          <Modal onClose={() => setIsModalVisible(false)} >
+            Kek
+         </Modal>
+        }
+
 
       </div>
     </>
