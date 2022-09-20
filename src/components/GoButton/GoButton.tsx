@@ -28,7 +28,8 @@ export function GoButton(p: Props) {
           p.bar
         );
 
-  if (distance && distance.distance < 50) {
+  // TODO make user setting -- max distance to walk
+  if (distance && distance.distance < 13) {
     barUrl = getMapsUrl({
       endLat: p.bar.coords[0],
       endLon: p.bar.coords[1],
