@@ -1,4 +1,4 @@
-import { BarInfo } from "../entities/bar";
+import { BarInfo } from "../../entities/bar";
 
 // Moscow bbox
 // 55.911086, 37.369779 top left

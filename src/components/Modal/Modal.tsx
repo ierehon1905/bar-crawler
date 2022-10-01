@@ -15,6 +15,7 @@ const contentVariants = {
 }
 
 type Props = {
+    title?: string,
     children: ReactNode,
     onClose?: () => void,
     hideCloseButton?: boolean,
@@ -41,7 +42,7 @@ export function Modal(p: Props) {
                         className="Modal-title"
                         style={p.color ? {color: p.color} : {}}
                     >
-                        Menu
+                        {p.title}
                     </div>
 
                     {!p.hideCloseButton && 
@@ -63,20 +64,6 @@ export function Modal(p: Props) {
 
                 <div className="Modal-body">
                     {p.children}
-                    aksdasd aksda dia sdjasndjas d a asmd
-                    askdkasd asndjansd jansjdas djansjdasd jansdjasd
-                    aksdkasd ajsnda sjdnajsd ajsdnjasd  ajsdja jasnd jasd jasd jasnd
-                     ajsdjasd jasndasjdnasd jdsjad
-                     ajsdjad jasndjasd jdasjdnad jdajsndja jasdjand ajsda
-                     askdkasd asndjansd jansjdas djansjdasd jansdjasd
-                     aksdkasd ajsnda sjdnajsd ajsdnjasd  ajsdja jasnd jasd jasd jasnd
-                     ajsdjasd jasndasjdnasd jdsjad
-                     ajsdjad jasndjasd jdasjdnad jdajsndja jasdjand ajsda
-
-                     askdkasd asndjansd jansjdas djansjdasd jansdjasd
-                    aksdkasd ajsnda sjdnajsd ajsdnjasd  ajsdja jasnd jasd jasd jasnd
-                     ajsdjasd jasndasjdnasd jdsjad
-                     ajsdjad jasndjasd jdasjdnad jdajsndja jasdjand ajsda
                 </div>
             </motion.div>
 
