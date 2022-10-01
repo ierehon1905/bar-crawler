@@ -28,17 +28,122 @@
     ]
   },
   {
-    "name": "Stamba Bar",
+    "name": "Lobby bar in Stamba",
     "coords": [
       41.7053513,
       44.7873826
     ]
   },
   {
-    "name": "Over bar",
+    "name": "Over Bar",
     "coords": [
       41.7065518,
       44.7878267
+    ]
+  },
+  {
+    "name": "41° Art of Drinks",
+    "coords": [
+      41.690367,
+      44.8011618
+    ]
+  },
+  {
+    "name": "Graal",
+    "coords": [
+      41.6968671,
+      44.8017334
+    ]
+  },
+  {
+    "name": "Cocktail Factory",
+    "coords": [
+      41.7083307,
+      44.7802353
+    ]
+  },
+  {
+    "name": "Sircha",
+    "coords": [
+      41.6995993,
+      44.7956417
+    ]
+  },
+  {
+    "name": "Barbar'a Bar",
+    "coords": [
+      41.6918927,
+      44.8063453
+    ]
+  },
+  {
+    "name": "Soda bar",
+    "coords": [
+      41.6909592,
+      44.7999966
+    ]
+  },
+  {
+    "name": "Freedom Aroma Bar",
+    "coords": [
+      41.7072443,
+      44.7673705
+    ]
+  },
+  {
+    "name": "The Bartender",
+    "coords": [
+      41.7116752,
+      44.797207
+    ]
+  },
+  {
+    "name": "1984 Jazz Club",
+    "coords": [
+      41.693333,
+      44.8032721
+    ]
+  },
+  {
+    "name": "LoveBar",
+    "coords": [
+      41.7225437,
+      44.7823931
+    ]
+  },
+  {
+    "name": "Drunk Owl Bar",
+    "coords": [
+      41.6889186,
+      44.8011866
+    ]
+  },
+  {
+    "name": "Sizmari Bar",
+    "coords": [
+      41.7069149,
+      44.779292
+    ]
+  },
+  {
+    "name": "Nevermind Bar",
+    "coords": [
+      41.7069149,
+      44.779292
+    ]
+  },
+  {
+    "name": "Bohemian Rhapsody Bar",
+    "coords": [
+      41.7069149,
+      44.779292
+    ]
+  },
+  {
+    "name": "Dogtown bar",
+    "coords": [
+      41.7083895,
+      44.7833077
     ]
   }
 ]
