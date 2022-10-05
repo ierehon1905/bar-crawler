@@ -46,23 +46,24 @@ const [isModalVisible, setIsModalVisible] = useState(false);
           <span>BAR</span>
           <br />
           <span>CRAWLER</span>
+          <div className="section" style={{marginTop: '53px'}}>
+            <Menu count={count} />
+          </div>
         </div>
       
-        <div className="section" style={{marginTop: '53px'}}>
-          <Menu count={count} />
-        </div>
 
         {!displayedBar && <>
-          <div className="section" style={{marginTop: '100px'}}>
+          <div className="section">
               <Loader />
           </div>
+          <div></div>
         </>}
 
         {displayedBar && 
           <>
             <motion.div 
               className="section" 
-              style={{marginTop: '0px'}}
+              style={{height: '300px'}}
               variants={barVariants}
               animate={isRandoming ? 'randoming' : 'default'}
               transition={{delay: 0, duration: 0, bounce: 0}}
@@ -71,7 +72,7 @@ const [isModalVisible, setIsModalVisible] = useState(false);
                 bar={displayedBar}
                 textStyle={textStyle}
                 isRandoming={isRandoming}
-                onNameClick={() => setIsModalVisible(true)}
+                // onNameClick={() => setIsModalVisible(true)}
                 
               />
             </motion.div>
@@ -93,28 +94,25 @@ const [isModalVisible, setIsModalVisible] = useState(false);
             />
           </>
         }
-
-        {
-          isGeoUnavailable &&
-          <Modal title={'Warning'}>
-            <h1>Allow Geo!</h1>
-            <p>
-            <br/>
-              Please allow geo to use this app <br/><br/>
-              Go to settings and allow geolocation for this app
-            </p>
-          </Modal>
-        }
-
-
-        {isModalVisible && 
-          <Modal onClose={() => setIsModalVisible(false)} color={textStyle?.color} >
-            Kek
-         </Modal>
-        }
-
-
       </div>
+      {
+        isGeoUnavailable &&
+        <Modal hideCloseButton title={'Warning'}>
+          <h1>Allow Geo!</h1>
+          <p>
+          <br/>
+            Please allow geo to use this web app <br/><br/>
+            Go to settings and allow geolocation for this web app <br/><br/>
+            Then refresh the page
+          </p>
+        </Modal>
+      }
+
+      {isModalVisible && 
+        <Modal onClose={() => setIsModalVisible(false)} color={textStyle?.color} >
+          Kek
+      </Modal>
+      }
     </>
   );
 };

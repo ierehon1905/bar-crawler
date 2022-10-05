@@ -33,7 +33,7 @@ export function GoButton(p: Props) {
         className="go-btn blinking" 
         style={{
           pointerEvents: p.isRandoming ? 'none' : 'all',
-          display: p.isRandoming ? 'none' : 'block',
+          visibility: p.isRandoming ? 'hidden' : 'visible',
         }}
       >
         <a
