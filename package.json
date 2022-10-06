@@ -20,6 +20,7 @@
     "@types/react-dom": "^18.0.6",
     "@typescript-eslint/eslint-plugin": "^5.30.6",
     "@typescript-eslint/parser": "^5.30.6",
+    "@vitejs/plugin-basic-ssl": "^0.1.2",
     "@vitejs/plugin-react": "^2.1.0",
     "eslint": "^7.32.0 || ^8.2.0",
     "eslint-plugin-import": "^2.25.3",

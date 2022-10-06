@@ -80,6 +80,7 @@ const [isModalVisible, setIsModalVisible] = useState(false);
           textStyle={textStyle}
           selectCurrentBar={selectCurrentBar}
           tryIncrementCount={tryIncrementCount}
+          position={position}
         />
 
 
