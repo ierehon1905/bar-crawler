@@ -1,135 +1,173 @@
 [
-    {
-      "name": "16 Тонн",
-      "coords": [
-        55.764271,
-        37.564192
-      ]
-    },
-    {
-      "name": "Pauwel KWAK",
-      "coords": [
-        55.700417,
-        37.512514
-      ]
-    },
-    {
-      "name": "Bobby Dazzler Pub",
-      "coords": [
-        55.767592,
-        37.635291
-      ]
-    },
-    {
-      "name": "Bear&Brut",
-      "coords": [
-        55.760126,
-        37.649268
-      ]
-    },
-    {
-      "name": "Shamrock",
-      "coords": [
-        55.913865,
-        37.86811
-      ]
-    },
-    {
-      "name": "Эль и Стаут ",
-      "coords": [
-        55.668953,
-        37.559602
-      ]
-    },
-    {
-      "name": "Брюгге",
-      "coords": [
-        55.76995,
-        37.678975
-      ]
-    },
-    {
-      "name": "Paulaner Bräuhaus",
-      "coords": [
-        55.732837,
-        37.641909
-      ]
-    },
-    {
-      "name": "St Peter’s & St Anton",
-      "coords": [
-        55.756368,
-        37.60974
-      ]
-    },
-    {
-      "name": "Drunken Duck Pub",
-      "coords": [
-        55.642114,
-        37.52402
-      ]
-    },
-    {
-      "name": "Punch & Judy",
-      "coords": [
-        55.744595,
-        37.627363
-      ]
-    },
-    {
-      "name": "Mollie’s",
-      "coords": [
-        55.762528,
-        37.634403
-      ]
-    },
-    {
-      "name": "Джон Донн",
-      "coords": [
-        55.755462,
-        37.600417
-      ]
-    },
-    {
-      "name": "Temple Bar",
-      "coords": [
-        55.76025,
-        37.664007
-      ]
-    },
-    {
-      "name": "London Pub",
-      "coords": [
-        55.761847,
-        37.62676
-      ]
-    },
-    {
-      "name": "Йоркшир",
-      "coords": [
-        55.783259,
-        37.52722
-      ]
-    },
-    {
-      "name": "Katie O’Shea’s",
-      "coords": [
-        55.777251,
-        37.634422
-      ]
-    },
-    {
-      "name": "Scotland Yard",
-      "coords": [
-        55.768715,
-        37.613279
-      ]
-    },
-    {
-      "name": "Pasternak Bar",
-      "coords": [
-        55.770701,
-        37.596425
-      ]
+  {
+    "name": "16 Тонн",
+    "position": {
+      "coords": {
+        "latitude": 55.764271,
+        "longitude": 37.564192
+      }
     }
-  ]
+  },
+  {
+    "name": "Pauwel KWAK",
+    "position": {
+      "coords": {
+        "latitude": 55.700417,
+        "longitude": 37.512514
+      }
+    }
+  },
+  {
+    "name": "Bobby Dazzler Pub",
+    "position": {
+      "coords": {
+        "latitude": 55.767592,
+        "longitude": 37.635291
+      }
+    }
+  },
+  {
+    "name": "Bear&Brut",
+    "position": {
+      "coords": {
+        "latitude": 55.760126,
+        "longitude": 37.649268
+      }
+    }
+  },
+  {
+    "name": "Shamrock",
+    "position": {
+      "coords": {
+        "latitude": 55.913865,
+        "longitude": 37.86811
+      }
+    }
+  },
+  {
+    "name": "Эль и Стаут",
+    "position": {
+      "coords": {
+        "latitude": 55.668953,
+        "longitude": 37.559602
+      }
+    }
+  },
+  {
+    "name": "Брюгге",
+    "position": {
+      "coords": {
+        "latitude": 55.76995,
+        "longitude": 37.678975
+      }
+    }
+  },
+  {
+    "name": "Paulaner Bräuhaus",
+    "position": {
+      "coords": {
+        "latitude": 55.732837,
+        "longitude": 37.641909
+      }
+    }
+  },
+  {
+    "name": "St Peter’s & St Anton",
+    "position": {
+      "coords": {
+        "latitude": 55.756368,
+        "longitude": 37.60974
+      }
+    }
+  },
+  {
+    "name": "Drunken Duck Pub",
+    "position": {
+      "coords": {
+        "latitude": 55.642114,
+        "longitude": 37.52402
+      }
+    }
+  },
+  {
+    "name": "Punch & Judy",
+    "position": {
+      "coords": {
+        "latitude": 55.744595,
+        "longitude": 37.627363
+      }
+    }
+  },
+  {
+    "name": "Mollie’s",
+    "position": {
+      "coords": {
+        "latitude": 55.762528,
+        "longitude": 37.634403
+      }
+    }
+  },
+  {
+    "name": "Джон Донн",
+    "position": {
+      "coords": {
+        "latitude": 55.755462,
+        "longitude": 37.600417
+      }
+    }
+  },
+  {
+    "name": "Temple Bar",
+    "position": {
+      "coords": {
+        "latitude": 55.76025,
+        "longitude": 37.664007
+      }
+    }
+  },
+  {
+    "name": "London Pub",
+    "position": {
+      "coords": {
+        "latitude": 55.761847,
+        "longitude": 37.62676
+      }
+    }
+  },
+  {
+    "name": "Йоркшир",
+    "position": {
+      "coords": {
+        "latitude": 55.783259,
+        "longitude": 37.52722
+      }
+    }
+  },
+  {
+    "name": "Katie O’Shea’s",
+    "position": {
+      "coords": {
+        "latitude": 55.777251,
+        "longitude": 37.634422
+      }
+    }
+  },
+  {
+    "name": "Scotland Yard",
+    "position": {
+      "coords": {
+        "latitude": 55.768715,
+        "longitude": 37.613279
+      }
+    }
+  },
+  {
+    "name": "Pasternak Bar",
+    "position": {
+      "coords": {
+        "latitude": 55.770701,
+        "longitude": 37.596425
+      }
+    }
+  }
+]

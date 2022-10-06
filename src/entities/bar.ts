@@ -8,8 +8,17 @@ import { randomChoise } from "../utils/random";
 const MAX_RANDOM_STEPS = 10;
 
 export type BarInfo = {
-    name: string,
-    coords: [number, number],
+    name: string;
+    recommendations?: string;
+    position: {
+        address?: string;
+        directions?: string;
+        gmapsLink?: string;
+        coords: {
+            latitude: number;
+            longitude: number;
+        },
+    }
 }
 
 export type BarDistance = {
@@ -56,10 +65,13 @@ export function getRandomBar(position?: GeolocationPosition) {
     return randomChoise(bars);
 }
 
-export function getBarDistance(coords: [number, number], bar: BarInfo): BarDistance {
+export function getBarDistance(coords: {
+    latitude: number;
+    longitude: number;
+}, bar: BarInfo): BarDistance {
     return {
         bar,
-        distance: distance(coords[0], bar.coords[0], coords[1], bar.coords[1])
+        distance: distance(coords.latitude, bar.position.coords.latitude, coords.longitude, bar.position.coords.longitude)
     }
 }
 
@@ -77,12 +89,15 @@ export function getNextBars(p: {
         return bars;
     }
 
-    let start: [number, number] | null = null;
+    let start: {
+        latitude: number;
+        longitude: number;
+    } | null = null;
 
     if (position) {
-        start = [position.coords.latitude, position.coords.longitude]
+        start = position.coords
     } else if (currentBar) {
-        start = currentBar.coords 
+        start = currentBar.position.coords 
     }
 
     if (!start) {
@@ -108,7 +123,7 @@ export function useBar(p: {position?: GeolocationPosition, findClosest?: boolean
     const randomingInterval = useRef<number>();
 
     const currentBarDistance = currentBar && p.position
-        ? getBarDistance([p.position.coords.latitude, p.position.coords.longitude], currentBar).distance
+        ? getBarDistance(p.position.coords, currentBar).distance
         : 0;
 
     useEffect(() => {   

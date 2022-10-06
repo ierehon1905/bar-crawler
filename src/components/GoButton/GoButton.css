@@ -1,4 +1,4 @@
-.go-btn {
+.GoButton {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -7,4 +7,9 @@
     width: 100%;
     padding: 8px 0;
     overflow: hidden;
+    padding-bottom: env(safe-area-inset-bottom);
+}
+
+.GoButton a {
+    text-decoration: none;
 }

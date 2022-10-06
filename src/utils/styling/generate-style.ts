@@ -5,6 +5,14 @@ import { colors, fontFamilies, shadowColors } from "./constants";
 
 const cyrillicFonts = fontFamilies.filter(font => font.cyrillic);
 
+export type TextStyle = {
+    fontFamily: string;
+    fontSize: string;
+    color: string;
+    textShadow: string;
+    transform: string;
+}
+
 export function generateTextStyle(text: string) {
     const isCyrillic = checkIsCyrillic(text);
 
@@ -31,5 +39,5 @@ export function generateTextStyle(text: string) {
         color,
         textShadow: `0 ${shadowSize}px ${shadowOffset}px ${shadowColor}`,
         transform: `rotate(${rotate})`,
-    }
+    } as TextStyle;
 }

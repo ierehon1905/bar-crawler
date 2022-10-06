@@ -20,12 +20,13 @@
 .Modal-content {
     background: #000;
     border: 1px solid #aaa;
-    border-radius: 2px;
+    border-radius: 0;
     display: flex;
     flex-direction: column;
     min-width: 300px;
     max-width: 90vw;
     position: relative;
+    overflow: hidden;
 }
 
 .Modal-header {
@@ -34,15 +35,8 @@
     width: 100%;
 }
 
-.Modal-divider {
-    height: 1px;
-    width: 100%;
-    background: #aaa;
-    margin: 0 auto;
-}
-
 .Modal-body {
-    padding: 12px 22px;
+    padding: 0;
     max-height: 70vh;
     overflow-y: auto;
     font-size: 14px;

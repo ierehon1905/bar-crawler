@@ -2,6 +2,8 @@ import {AnimatePresence, motion} from 'framer-motion';
 import React, { useMemo, useState } from "react";
 
 import { Bar } from "./components/Bar/Bar";
+import { BarModal } from './components/BarModal/BarModal';
+import { EnableGeoModal } from './components/EnableGeoModal/EnableGeoModal';
 import { GoButton } from "./components/GoButton/GoButton";
 import { Loader } from './components/Loader/Loader';
 import { Menu } from "./components/Menu/Menu";
@@ -72,11 +74,9 @@ const [isModalVisible, setIsModalVisible] = useState(false);
                 bar={displayedBar}
                 textStyle={textStyle}
                 isRandoming={isRandoming}
-                // onNameClick={() => setIsModalVisible(true)}
-                
+                onNameClick={() => setIsModalVisible(true)}
               />
             </motion.div>
-
 
             <motion.div 
               className="section" 
@@ -95,23 +95,11 @@ const [isModalVisible, setIsModalVisible] = useState(false);
           </>
         }
       </div>
-      {
-        isGeoUnavailable &&
-        <Modal hideCloseButton title={'Warning'}>
-          <h1>Allow Geo!</h1>
-          <p>
-          <br/>
-            Please allow geo to use this web app <br/><br/>
-            Go to settings and allow geolocation for this web app <br/><br/>
-            Then refresh the page
-          </p>
-        </Modal>
-      }
+
+      {isGeoUnavailable && <EnableGeoModal />}
 
       {isModalVisible && 
-        <Modal onClose={() => setIsModalVisible(false)} color={textStyle?.color} >
-          Kek
-      </Modal>
+        <BarModal bar={displayedBar} textStyle={textStyle} onClose={() => setIsModalVisible(false)} />
       }
     </>
   );

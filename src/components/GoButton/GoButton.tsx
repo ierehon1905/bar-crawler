@@ -16,8 +16,8 @@ type Props = {
 
 export function GoButton(p: Props) {
     const barUrl = getTaxiUrl({
-        endLat: p.bar.coords[0],
-        endLon: p.bar.coords[1],
+        endLat: p.bar.position.coords.latitude,
+        endLon: p.bar.position.coords.longitude,
         startLat: p.position?.coords.latitude,
         startLon:p.position?.coords.longitude,
     });
@@ -30,7 +30,7 @@ export function GoButton(p: Props) {
 
     return (
       <motion.div 
-        className="go-btn blinking" 
+        className="GoButton blinking" 
         style={{
           pointerEvents: p.isRandoming ? 'none' : 'all',
           visibility: p.isRandoming ? 'hidden' : 'visible',
@@ -48,7 +48,7 @@ export function GoButton(p: Props) {
           href={barUrl}
           onClick={onClick}
         >
-          <span className="shadow-text">
+          <span className="GoButton__shadow-text">
               GO
           </span>
         </a>
