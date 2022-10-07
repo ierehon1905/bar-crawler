@@ -21,37 +21,22 @@ export const CounterModal = (p: Props) => {
         <Modal title='Bars counter' bodyClassName="CounterModal" onClose={p.onClose} color={color} bodyStyle={{
             textAlign: 'center',
         }}>
-            <div className="CounterModal__counter">
-                <div className='Menu__score'>{p.count || 0}</div>
-            </div>
 
-            <ModalDivider color={color} />
-            <div className="CounterModal__buttons-row">
-                <ModalSection 
-                    color={color} 
-                    onClick={p.onDecrement}
-                    style={{
-                        borderRight: `1px solid ${color}`,
-                    }} 
-                >
-                    <p>MINUS</p>
-                </ModalSection>
-
-                <ModalSection 
-                    color={color} 
-                    onClick={p.onIncrement}
-                >
-                    <p>PLUS</p>
-                </ModalSection>
-            </div>
-
-            <ModalDivider color={color} />
             <ModalSection 
                 color={color} 
                 onClick={p.onReset}
+                className="CounterModal__reset"
             >
-                <p>RESET</p>
+                <p>reset</p>
             </ModalSection>
+
+            <ModalDivider color={color} />
+
+            <div className="CounterModal__counter">
+                <div className="CounterModal__change-count" onClick={p.onDecrement} >-</div>
+                <div className='CounterModal__value'>{p.count || 0}</div>
+                <div className="CounterModal__change-count" onClick={p.onIncrement} >+</div>
+            </div>
 
         </Modal>
     )

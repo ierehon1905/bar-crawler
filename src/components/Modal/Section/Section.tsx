@@ -11,6 +11,7 @@ type Props = {
     link?: string;
     onClick?: () => void;
     style?: React.CSSProperties;
+    className?: string;
 }
     
 export function ModalSection(p: Props) {
@@ -19,7 +20,7 @@ export function ModalSection(p: Props) {
 
     return (
         <>
-            <Wrapper style={p.style} className='ModalSection' target={"_blank"} href={p.link || "#"} onClick={p.onClick}>
+            <Wrapper style={p.style} className={'ModalSection ' + p.className || ""} target={"_blank"} href={p.link || "#"} onClick={p.onClick}>
                 {p.iconLeft && <div className="ModalSection__left-icon">
                     <img className='icon' src={`/icons/${p.iconLeft}.png`} alt="" />
                 </div>}
