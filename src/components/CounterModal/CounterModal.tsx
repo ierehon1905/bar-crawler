@@ -22,21 +22,22 @@ export const CounterModal = (p: Props) => {
             textAlign: 'center',
         }}>
 
-            <ModalSection 
-                color={color} 
-                onClick={p.onReset}
-                className="CounterModal__reset"
-            >
-                <p>reset</p>
-            </ModalSection>
-
-            <ModalDivider color={color} />
 
             <div className="CounterModal__counter">
                 <div className="CounterModal__change-count" onClick={p.onDecrement} >-</div>
                 <div className='CounterModal__value'>{p.count || 0}</div>
                 <div className="CounterModal__change-count" onClick={p.onIncrement} >+</div>
             </div>
+
+            <ModalDivider color={color} />
+
+            {/* <ModalSection 
+                color={color} 
+                onClick={p.onReset}
+                className="CounterModal__reset"
+            >
+                <p>reset</p>
+            </ModalSection> */}
 
         </Modal>
     )
