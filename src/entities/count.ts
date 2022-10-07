@@ -67,6 +67,15 @@ export function useCount() {
         saveCount(newCount)
     }, [count, setCount])
 
+    const decrementCount = useCallback(() => {
+        if(count <= 0) return;
+
+        const newCount = count - 1;
+
+        setCount(newCount);
+        saveCount(newCount)
+    }, [count, setCount])
+
     function tryIncrementCount() {
         setAttemptIncrementTimestamp(Date.now())
         console.log('aaaa increment');
@@ -93,6 +102,7 @@ export function useCount() {
     return {
         count, 
         incrementCount,
+        decrementCount,
         tryIncrementCount,
         resetCount
     }

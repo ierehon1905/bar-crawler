@@ -2,14 +2,15 @@ import React from 'react';
 import './Menu.css';
 
 type Props = {
-    count?: number
+    count?: number;
+    onCounterClick?: () => void;
 }
 
 export function Menu(p: Props) {
 
     return (
-        <div className='root'>
-            <div className='score'>{p.count || 0}</div>
+        <div className='Menu__root'>
+            <div className='Menu__score' onClick={p.onCounterClick}>{p.count || 0}</div>
         </div>
     )
 }

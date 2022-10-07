@@ -3,6 +3,7 @@ import React, { useMemo, useState } from "react";
 
 import { Bar } from "./components/Bar/Bar";
 import { BarModal } from './components/BarModal/BarModal';
+import { CounterModal } from './components/CounterModal/CounterModal';
 import { EnableGeoModal } from './components/EnableGeoModal/EnableGeoModal';
 import { GoButton } from "./components/GoButton/GoButton";
 import { Loader } from './components/Loader/Loader';
@@ -21,7 +22,7 @@ const barVariants = {
 
 const App: React.FC = () => {
   const {position, isGeoUnavailable} = useGeo();
-  const {count, tryIncrementCount} = useCount();
+  const {count, tryIncrementCount, incrementCount, decrementCount, resetCount} = useCount();
 
   const {
     selectCurrentBar,
@@ -38,7 +39,8 @@ const App: React.FC = () => {
     // eslint-disable-next-line
 }, [displayedBar?.name])
 
-const [isModalVisible, setIsModalVisible] = useState(false);
+const [isBarModalVisible, setIsBarModalVisible] = useState(false);
+const [isCounterModalVisible, setIsCounterModalVisible] = useState(false);
 
 
   return (
@@ -49,7 +51,7 @@ const [isModalVisible, setIsModalVisible] = useState(false);
           <br />
           <span>CRAWLER</span>
           <div className="section" style={{marginTop: '53px'}}>
-            <Menu count={count} />
+            <Menu count={count} onCounterClick={() => setIsCounterModalVisible(true)} />
           </div>
         </div>
       
@@ -74,7 +76,7 @@ const [isModalVisible, setIsModalVisible] = useState(false);
                 bar={displayedBar}
                 textStyle={textStyle}
                 isRandoming={isRandoming}
-                onNameClick={() => setIsModalVisible(true)}
+                onNameClick={() => setIsBarModalVisible(true)}
               />
             </motion.div>
 
@@ -98,9 +100,28 @@ const [isModalVisible, setIsModalVisible] = useState(false);
 
       {isGeoUnavailable && <EnableGeoModal />}
 
-      {isModalVisible && 
-        <BarModal bar={displayedBar} textStyle={textStyle} onClose={() => setIsModalVisible(false)} />
-      }
+      <AnimatePresence>
+        {isBarModalVisible && 
+          <BarModal 
+            bar={displayedBar} 
+            textStyle={textStyle} 
+            onClose={() => setIsBarModalVisible(false)} 
+          />
+        }
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {isCounterModalVisible && 
+          <CounterModal 
+            count={count}
+            onIncrement={incrementCount}
+            onDecrement={decrementCount}
+            onReset={resetCount}
+            textStyle={textStyle} 
+            onClose={() => setIsCounterModalVisible(false)} 
+          />
+        }
+      </AnimatePresence>
     </>
   );
 };
