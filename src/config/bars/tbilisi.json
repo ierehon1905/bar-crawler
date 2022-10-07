@@ -1,0 +1,278 @@
+﻿[
+  {
+    "name": "Alco Hall",
+    "recommendations": "Located at the Wine Factory.\nAmazing cocktails, really nice stuff, cool interior",
+    "position": {
+      "address": "1 Vasil Petriashvili Street, Tbilisi",
+      "gmapsLink": "https://goo.gl/maps/VB1iQaBauPYucJwm8",
+      "coords": {
+        "latitude": 41.7081702,
+        "longitude": 44.7795744
+      }
+    }
+  },
+  {
+    "name": "Candy Bar",
+    "recommendations": "Located at the Wine Factory.\nGood place to have cocktails. Casual place  for hangout",
+    "position": {
+      "address": "1 Vasil Petriashvili Street, Tbilisi",
+      "gmapsLink": "https://goo.gl/maps/nXVuqHRrYajJnmvH6",
+      "coords": {
+        "latitude": 41.7081546,
+        "longitude": 44.7796976
+      }
+    }
+  },
+  {
+    "name": "Holy Restaurant",
+    "recommendations": "Located at the Wine Factory.\nDistinctive environment and amazing dishes. Stunning signature cocktails",
+    "position": {
+      "address": "1 Vasil Petriashvili Street, Tbilisi",
+      "gmapsLink": "https://goo.gl/maps/Uuw2bSHQ1SMDrQzR6",
+      "coords": {
+        "latitude": 41.7080933,
+        "longitude": 44.7793592
+      }
+    }
+  },
+  {
+    "name": "St. Bunny Chemi",
+    "recommendations": "The best combination of hookahs, food and bar",
+    "position": {
+      "address": "4, T, Tamar Chovelidze St, Tbilisi",
+      "gmapsLink": "https://goo.gl/maps/PNpyPu6jXfzf4obU7",
+      "coords": {
+        "latitude": 41.7048368,
+        "longitude": 44.7849781
+      }
+    }
+  },
+  {
+    "name": "Lobby bar in Stamba",
+    "recommendations": "Amazing interior",
+    "position": {
+      "address": "14, 0108 Merab Kostava St, Tbilisi",
+      "gmapsLink": "https://goo.gl/maps/zmLSRisJKE7ye7aQ8",
+      "coords": {
+        "latitude": 41.7053513,
+        "longitude": 44.7873826
+      }
+    }
+  },
+  {
+    "name": "Over Bar",
+    "recommendations": false,
+    "position": {
+      "address": "5 Vashlovani St, Tbilisi",
+      "gmapsLink": "https://goo.gl/maps/6Wmn55HfaNB4WDe37",
+      "coords": {
+        "latitude": 41.7065518,
+        "longitude": 44.7878267
+      }
+    }
+  },
+  {
+    "name": "41° Art of Drinks",
+    "recommendations": false,
+    "position": {
+      "address": "19 Galaktion Tabidze St, Tbilisi",
+      "gmapsLink": "https://goo.gl/maps/7QQQtZMKAQftJR7x5",
+      "coords": {
+        "latitude": 41.690367,
+        "longitude": 44.8011618
+      }
+    }
+  },
+  {
+    "name": "Graal",
+    "recommendations": false,
+    "position": {
+      "address": "4 Grigol Abashidze St, Tbilisi",
+      "gmapsLink": "https://goo.gl/maps/vFgMQWJA2FAgnLNJ9",
+      "coords": {
+        "latitude": 41.6968671,
+        "longitude": 44.8017334
+      }
+    }
+  },
+  {
+    "name": "Cocktail Factory",
+    "recommendations": "Located at the Wine Factory.",
+    "position": {
+      "address": "1 Vasil Petriashvili Street, Tbilisi",
+      "gmapsLink": "https://goo.gl/maps/2PzLpGmdYVoi1sMe7",
+      "coords": {
+        "latitude": 41.7083307,
+        "longitude": 44.7802353
+      }
+    }
+  },
+  {
+    "name": "Sircha",
+    "recommendations": "Bar without a menu. Here you can have any cocktail you want. The Best White Russian in Tbilisi",
+    "position": {
+      "address": "Mitropan Lagidze 6, Tbilisi",
+      "gmapsLink": "https://goo.gl/maps/yYmbc3ZsZeKmf2HK6",
+      "coords": {
+        "latitude": 41.6995993,
+        "longitude": 44.7956417
+      }
+    }
+  },
+  {
+    "name": "Barbar'a Bar",
+    "recommendations": false,
+    "position": {
+      "address": false,
+      "gmapsLink": false,
+      "coords": {
+        "latitude": 41.6918927,
+        "longitude": 44.8063453
+      }
+    }
+  },
+  {
+    "name": "Soda bar",
+    "recommendations": false,
+    "position": {
+      "address": false,
+      "gmapsLink": false,
+      "coords": {
+        "latitude": 41.6909592,
+        "longitude": 44.7999966
+      }
+    }
+  },
+  {
+    "name": "Freedom Aroma Bar",
+    "recommendations": false,
+    "position": {
+      "address": false,
+      "gmapsLink": false,
+      "coords": {
+        "latitude": 41.7072443,
+        "longitude": 44.7673705
+      }
+    }
+  },
+  {
+    "name": "The Bartender",
+    "recommendations": false,
+    "position": {
+      "address": false,
+      "gmapsLink": false,
+      "coords": {
+        "latitude": 41.7116752,
+        "longitude": 44.797207
+      }
+    }
+  },
+  {
+    "name": "1984 Jazz Club",
+    "recommendations": false,
+    "position": {
+      "address": false,
+      "gmapsLink": false,
+      "coords": {
+        "latitude": 41.693333,
+        "longitude": 44.8032721
+      }
+    }
+  },
+  {
+    "name": "LoveBar",
+    "recommendations": false,
+    "position": {
+      "address": false,
+      "gmapsLink": false,
+      "coords": {
+        "latitude": 41.7225437,
+        "longitude": 44.7823931
+      }
+    }
+  },
+  {
+    "name": "Drunk Owl Bar",
+    "recommendations": false,
+    "position": {
+      "address": false,
+      "gmapsLink": false,
+      "coords": {
+        "latitude": 41.6889186,
+        "longitude": 44.8011866
+      }
+    }
+  },
+  {
+    "name": "Sizmari Bar",
+    "recommendations": false,
+    "position": {
+      "address": false,
+      "gmapsLink": false,
+      "coords": {
+        "latitude": 41.7069149,
+        "longitude": 44.779292
+      }
+    }
+  },
+  {
+    "name": "Nevermind Bar",
+    "recommendations": false,
+    "position": {
+      "address": false,
+      "gmapsLink": false,
+      "coords": {
+        "latitude": 41.7069149,
+        "longitude": 44.779292
+      }
+    }
+  },
+  {
+    "name": "Bohemian Rhapsody Bar",
+    "recommendations": false,
+    "position": {
+      "address": false,
+      "gmapsLink": false,
+      "coords": {
+        "latitude": 41.7069149,
+        "longitude": 44.779292
+      }
+    }
+  },
+  {
+    "name": "Dogtown bar",
+    "recommendations": false,
+    "position": {
+      "address": false,
+      "gmapsLink": false,
+      "coords": {
+        "latitude": 41.7083895,
+        "longitude": 44.7833077
+      }
+    }
+  },
+  {
+    "name": "L'ADO by Valiko Mansion",
+    "recommendations": false,
+    "position": {
+      "address": false,
+      "gmapsLink": false,
+      "coords": {
+        "latitude": 41.6908013,
+        "longitude": 44.8038826
+      }
+    }
+  },
+  {
+    "name": "Mozaika",
+    "recommendations": false,
+    "position": {
+      "address": false,
+      "gmapsLink": false,
+      "coords": {
+        "latitude": 41.7061853,
+        "longitude": 44.7868743
+      }
+    }
+  }
+]

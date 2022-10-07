@@ -2,7 +2,10 @@ import {AnimatePresence, motion} from 'framer-motion';
 import React, { useMemo, useState } from "react";
 
 import { Bar } from "./components/Bar/Bar";
+import { BarModal } from './components/BarModal/BarModal';
+import { EnableGeoModal } from './components/EnableGeoModal/EnableGeoModal';
 import { GoButton } from "./components/GoButton/GoButton";
+import { Loader } from './components/Loader/Loader';
 import { Menu } from "./components/Menu/Menu";
 import { Modal } from './components/Modal/Modal';
 import { RandomButton } from "./components/RandomButton/RandomButton";
@@ -17,7 +20,7 @@ const barVariants = {
 }
 
 const App: React.FC = () => {
-  const {position} = useGeo();
+  const {position, isGeoUnavailable} = useGeo();
   const {count, tryIncrementCount} = useCount();
 
   const {
@@ -30,9 +33,10 @@ const App: React.FC = () => {
 
 
   const textStyle = useMemo(() => {
-    return generateTextStyle(displayedBar.name)
+
+    return generateTextStyle(displayedBar?.name)
     // eslint-disable-next-line
-}, [displayedBar.name])
+}, [displayedBar?.name])
 
 const [isModalVisible, setIsModalVisible] = useState(false);
 
@@ -44,53 +48,59 @@ const [isModalVisible, setIsModalVisible] = useState(false);
           <span>BAR</span>
           <br />
           <span>CRAWLER</span>
+          <div className="section" style={{marginTop: '53px'}}>
+            <Menu count={count} />
+          </div>
         </div>
       
-        <div className="section" style={{marginTop: '53px'}}>
-          <Menu count={count} />
-        </div>
 
-        <motion.div 
-          className="section" 
-          style={{marginTop: '0px'}}
-          variants={barVariants}
-          animate={isRandoming ? 'randoming' : 'default'}
-          transition={{delay: 0, duration: 0, bounce: 0}}
-        >
-          <Bar 
-            bar={displayedBar}
-            textStyle={textStyle}
-            isRandoming={isRandoming}
-            onNameClick={() => setIsModalVisible(true)}
-            
-          />
-        </motion.div>
+        {!displayedBar && <>
+          <div className="section">
+              <Loader />
+          </div>
+          <div></div>
+        </>}
 
+        {displayedBar && 
+          <>
+            <motion.div 
+              className="section" 
+              style={{height: '300px'}}
+              variants={barVariants}
+              animate={isRandoming ? 'randoming' : 'default'}
+              transition={{delay: 0, duration: 0, bounce: 0}}
+            >
+              <Bar 
+                bar={displayedBar}
+                textStyle={textStyle}
+                isRandoming={isRandoming}
+                onNameClick={() => setIsModalVisible(true)}
+              />
+            </motion.div>
 
-        <motion.div 
-          className="section" 
-          style={{marginTop: '2px', pointerEvents: isRandoming ? 'none' : 'all'}}
-        >
-          <RandomButton isRandoming={isRandoming} onClick={randomizeBar} />
-        </motion.div>
+            <motion.div 
+              className="section" 
+              style={{marginTop: '2px', pointerEvents: isRandoming ? 'none' : 'all'}}
+            >
+              <RandomButton isRandoming={isRandoming} onClick={randomizeBar} />
+            </motion.div>
 
-        <GoButton 
-          isRandoming={isRandoming} 
-          bar={displayedBar}
-          textStyle={textStyle}
-          selectCurrentBar={selectCurrentBar}
-          tryIncrementCount={tryIncrementCount}
-        />
-
-
-        {isModalVisible && 
-          <Modal onClose={() => setIsModalVisible(false)} color={textStyle?.color} >
-            Kek
-         </Modal>
+            <GoButton 
+              isRandoming={isRandoming} 
+              bar={displayedBar}
+              textStyle={textStyle}
+              selectCurrentBar={selectCurrentBar}
+              tryIncrementCount={tryIncrementCount}
+            />
+          </>
         }
-
-
       </div>
+
+      {isGeoUnavailable && <EnableGeoModal />}
+
+      {isModalVisible && 
+        <BarModal bar={displayedBar} textStyle={textStyle} onClose={() => setIsModalVisible(false)} />
+      }
     </>
   );
 };

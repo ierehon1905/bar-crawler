@@ -37,6 +37,8 @@ export function RandomButton(p: Props) {
                 alignItems: "center",
                 display: "flex",
                 margin: "0 auto",
+                visibility: 'visible',
+                pointerEvents: 'all',
             }}
             variants={{
                 randoming: {
@@ -44,8 +46,9 @@ export function RandomButton(p: Props) {
                     // rotate: '90deg',
                     // transform: 'skew(-90deg)',
                     // scale: 0.8,
+                    visibility: 'hidden',
+                    pointerEvents: 'none',
                     // opacity: 0
-                    display: 'none'
                 },
             }}
             onClick={p.onClick}

@@ -1,5 +1,6 @@
-import {motion} from 'framer-motion'
 import React, { ReactNode } from "react"
+import { motion } from 'framer-motion'
+import { ModalDivider } from './Divider/Divider';
 import './Modal.css';
 
 
@@ -15,10 +16,12 @@ const contentVariants = {
 }
 
 type Props = {
+    title?: string,
     children: ReactNode,
     onClose?: () => void,
     hideCloseButton?: boolean,
     color?: string,
+    bodyStyle?: React.CSSProperties,
 }
     
 export function Modal(p: Props) {
@@ -41,7 +44,7 @@ export function Modal(p: Props) {
                         className="Modal-title"
                         style={p.color ? {color: p.color} : {}}
                     >
-                        Menu
+                        {p.title || " "}
                     </div>
 
                     {!p.hideCloseButton && 
@@ -55,28 +58,10 @@ export function Modal(p: Props) {
                     }
                 </div>
 
-                <div 
-                    className="Modal-divider" 
-                    style={p.color ? {backgroundColor: p.color} : {}}
-                />
+                <ModalDivider color={p.color} />
 
-
-                <div className="Modal-body">
+                <div className="Modal-body" style={p.bodyStyle}>
                     {p.children}
-                    aksdasd aksda dia sdjasndjas d a asmd
-                    askdkasd asndjansd jansjdas djansjdasd jansdjasd
-                    aksdkasd ajsnda sjdnajsd ajsdnjasd  ajsdja jasnd jasd jasd jasnd
-                     ajsdjasd jasndasjdnasd jdsjad
-                     ajsdjad jasndjasd jdasjdnad jdajsndja jasdjand ajsda
-                     askdkasd asndjansd jansjdas djansjdasd jansdjasd
-                     aksdkasd ajsnda sjdnajsd ajsdnjasd  ajsdja jasnd jasd jasd jasnd
-                     ajsdjasd jasndasjdnasd jdsjad
-                     ajsdjad jasndjasd jdasjdnad jdajsndja jasdjand ajsda
-
-                     askdkasd asndjansd jansjdas djansjdasd jansdjasd
-                    aksdkasd ajsnda sjdnajsd ajsdnjasd  ajsdja jasnd jasd jasd jasnd
-                     ajsdjasd jasndasjdnasd jdsjad
-                     ajsdjad jasndjasd jdasjdnad jdajsndja jasdjand ajsda
                 </div>
             </motion.div>
 
