@@ -1,9 +1,10 @@
-.root {
+.Menu__root {
     display: flex;
     justify-content: center;
     width: 100%;
 }
 
-.score {
+.Menu__score {
     font-size: 36px;
+    padding: 20px;
 }

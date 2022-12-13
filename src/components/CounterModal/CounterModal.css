@@ -1,0 +1,39 @@
+.CounterModal {
+    text-align: center;
+}
+.CounterModal p {
+    width: 100%;
+}
+
+.CounterModal__counter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 120px;
+}
+
+.CounterModal__value {
+    font-size: 36px;
+    width: 80px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.CounterModal__change-count {
+    font-size: 28px;
+    width: 100%;
+    height: 100%;
+    opacity: 0.7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.CounterModal__reset {
+    opacity: 0.7;
+}
+
+.CounterModal__change-count:active, .CounterModal__reset:active {
+    opacity: 0.4;
+}
